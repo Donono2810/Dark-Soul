@@ -1,6 +1,13 @@
-# Dark Soul - Jeu Roblox Ultra-Méga-Complet avec Niveaux & Multiples Boss
+# Dark Soul - Jeu Roblox Ultra-Méga-Complet avec Classes
 
-Ce projet est un jeu Roblox ultra-méga-complet inspiré de Dark Souls avec 5 niveaux et de multiples boss par zone.
+Ce projet est un jeu Roblox ultra-méga-complet inspiré de Dark Souls avec 5 classes jouables et un système de progression complet.
+
+## 5 Classes Jouables
+- **Warrior** (150 HP, +15 dmg, vitesse 12) : Force brute, haute santé, charge brutale, items : Épée, Potions
+- **Mage** (80 HP, +10 dmg, vitesse 10) : Magie puissante, peu de santé, tempête de feu, items : Dague, Fireballs, Potions
+- **Archer** (100 HP, +12 dmg, vitesse 15) : Rapide et précis, salve de flèches, items : Arc, Dague, Potions
+- **Rogue** (90 HP, +20 dmg, vitesse 18) : Ultra-rapide, coup fatal, items : 2x Dague, Rapier, Potions
+- **Paladin** (140 HP, +18 dmg, vitesse 11) : Équilibré, aura protectrice, items : Épée, Sorts de protection/heal
 
 ## Armes (10 types)
 - **Épée** (20 dmg, 1.5s) : Équilibrée
@@ -33,6 +40,7 @@ Ce projet est un jeu Roblox ultra-méga-complet inspiré de Dark Souls avec 5 ni
 - R : Heal (soigne 50 HP).
 - E : Potion.
 - Bouton "Inventaire" : Menu avec craft.
+- **Au démarrage** : Écran de sélection de classe (cliquez sur une classe, puis "Confirmer").
 - Mouvement : WASD.
 
 ## Zones & Boss

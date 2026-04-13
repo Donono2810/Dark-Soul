@@ -1,8 +1,9 @@
--- LocalScript pour l'UI améliorée (santé, niveau, inventaire, quêtes, craft)
+-- LocalScript pour l'UI avec classe affichée
 local player = game.Players.LocalPlayer
 local InventoryModule = require(game.ReplicatedStorage.InventoryModule)
 local QuestModule = require(game.ReplicatedStorage.QuestModule)
 local CraftModule = require(game.ReplicatedStorage.CraftModule)
+local ClassModule = require(game.ReplicatedStorage.ClassModule)
 
 -- Créer une GUI
 local screenGui = Instance.new("ScreenGui")
@@ -20,15 +21,22 @@ levelLabel.Position = UDim2.new(0, 10, 0, 70)
 levelLabel.Text = "Niveau: 1"
 levelLabel.Parent = screenGui
 
+-- Afficher la classe
+local classLabel = Instance.new("TextLabel")
+classLabel.Size = UDim2.new(0, 200, 0, 50)
+classLabel.Position = UDim2.new(0, 10, 0, 130)
+classLabel.Text = "Classe: " .. ClassModule.GetPlayerClass(player)
+classLabel.Parent = screenGui
+
 local inventoryLabel = Instance.new("TextLabel")
 inventoryLabel.Size = UDim2.new(0, 300, 0, 100)
-inventoryLabel.Position = UDim2.new(0, 10, 0, 130)
+inventoryLabel.Position = UDim2.new(0, 10, 0, 190)
 inventoryLabel.Text = "Inventaire: Vide"
 inventoryLabel.Parent = screenGui
 
 local questLabel = Instance.new("TextLabel")
 questLabel.Size = UDim2.new(0, 300, 0, 50)
-questLabel.Position = UDim2.new(0, 10, 0, 240)
+questLabel.Position = UDim2.new(0, 10, 0, 300)
 questLabel.Text = "Quêtes: Aucune"
 questLabel.Parent = screenGui
 
@@ -55,7 +63,6 @@ craftButton.Parent = invFrame
 craftButton.MouseButton1Click:Connect(function()
     if CraftModule.CraftItem(player, "Greatsword") then
         print("Greatsword craftée !")
-        -- Rafraîchir inventaire
         invFrame.Visible = false
         invFrame.Visible = true
     else
