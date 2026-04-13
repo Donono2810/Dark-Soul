@@ -54,3 +54,7 @@ Ce projet est un jeu Roblox ultra-méga-complet inspiré de Dark Souls avec 5 cl
 **Total : 18 boss dans le jeu !**
 
 Importez dans Roblox Studio pour jouer !
+
+📖 **[👉 LIRE LE GUIDE D'IMPORTATION 👈](INSTALLATION.md)**
+
+---
