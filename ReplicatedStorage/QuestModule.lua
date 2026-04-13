@@ -1,13 +1,22 @@
--- ModuleScript pour les quêtes
+-- ModuleScript pour les quêtes (multiples par zone)
 local QuestModule = {}
 
 local playerQuests = {} -- Quêtes actives par joueur
+
+local questData = {
+    ["KillEnemies"] = {required = 5, reward = {["Potion"] = 2, ["Axe"] = 1}},
+    ["KillGoblins"] = {required = 3, reward = {["Dagger"] = 1, ["Potion"] = 1}},
+    ["KillOrcs"] = {required = 2, reward = {["Greatsword"] = 1}},
+    ["CollectBones"] = {required = 10, reward = {["ShieldSpell"] = 2}} -- Collecte
+}
 
 function QuestModule.StartQuest(player, questName)
     if not playerQuests[player.UserId] then
         playerQuests[player.UserId] = {}
     end
-    playerQuests[player.UserId][questName] = {progress = 0, required = 5} -- Exemple : tuer 5 ennemis
+    if questData[questName] then
+        playerQuests[player.UserId][questName] = {progress = 0, required = questData[questName].required}
+    end
 end
 
 function QuestModule.UpdateQuest(player, questName, amount)
@@ -16,10 +25,11 @@ function QuestModule.UpdateQuest(player, questName, amount)
         if playerQuests[player.UserId][questName].progress >= playerQuests[player.UserId][questName].required then
             -- Récompense
             local InventoryModule = require(game.ReplicatedStorage.InventoryModule)
-            InventoryModule.AddItem(player, "Potion", 2)
-            InventoryModule.AddItem(player, "Axe", 1)
+            for item, qty in pairs(questData[questName].reward) do
+                InventoryModule.AddItem(player, item, qty)
+            end
             playerQuests[player.UserId][questName] = nil -- Terminer quête
-            print("Quête terminée ! Récompenses ajoutées.")
+            print("Quête " .. questName .. " terminée ! Récompenses ajoutées.")
         end
     end
 end

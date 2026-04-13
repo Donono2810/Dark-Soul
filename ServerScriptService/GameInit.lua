@@ -4,12 +4,12 @@ local BossModule = require(game.ReplicatedStorage.BossModule)
 local InventoryModule = require(game.ReplicatedStorage.InventoryModule)
 local SaveModule = require(game.ReplicatedStorage.SaveModule)
 
--- Placer ennemis
-EnemyModule.CreateEnemy(Vector3.new(10, 0, 10), 20, "KillEnemies", {["Potion"] = 0.3})
-EnemyModule.CreateEnemy(Vector3.new(-10, 0, -10), 20, "KillEnemies", {["Potion"] = 0.3})
-EnemyModule.CreateEnemy(Vector3.new(0, 0, 20), 20, "KillEnemies", {["Potion"] = 0.3})
+-- Placer ennemis Zone 1
+EnemyModule.CreateEnemy(Vector3.new(10, 0, 10), "Basic", "KillEnemies")
+EnemyModule.CreateEnemy(Vector3.new(-10, 0, -10), "Basic", "KillEnemies")
+EnemyModule.CreateEnemy(Vector3.new(0, 0, 20), "Basic", "KillEnemies")
 
--- Boss
+-- Boss Zone 1
 BossModule.CreateBoss(Vector3.new(0, 0, 30), 200)
 
 -- Donner items de départ aux joueurs
