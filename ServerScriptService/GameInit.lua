@@ -5,9 +5,9 @@ local InventoryModule = require(game.ReplicatedStorage.InventoryModule)
 local SaveModule = require(game.ReplicatedStorage.SaveModule)
 
 -- Placer ennemis
-EnemyModule.CreateEnemy(Vector3.new(10, 0, 10), 20, "KillEnemies")
-EnemyModule.CreateEnemy(Vector3.new(-10, 0, -10), 20, "KillEnemies")
-EnemyModule.CreateEnemy(Vector3.new(0, 0, 20), 20, "KillEnemies")
+EnemyModule.CreateEnemy(Vector3.new(10, 0, 10), 20, "KillEnemies", {["Potion"] = 0.3})
+EnemyModule.CreateEnemy(Vector3.new(-10, 0, -10), 20, "KillEnemies", {["Potion"] = 0.3})
+EnemyModule.CreateEnemy(Vector3.new(0, 0, 20), 20, "KillEnemies", {["Potion"] = 0.3})
 
 -- Boss
 BossModule.CreateBoss(Vector3.new(0, 0, 30), 200)
@@ -18,5 +18,7 @@ game.Players.PlayerAdded:Connect(function(player)
     InventoryModule.AddItem(player, "Potion", 3)
     InventoryModule.AddItem(player, "Sword", 1)
     InventoryModule.AddItem(player, "Fireball", 5)
+    InventoryModule.AddItem(player, "ShieldSpell", 3)
+    InventoryModule.AddItem(player, "HealSpell", 3)
     InventoryModule.EquipItem(player, "Sword")
 end)

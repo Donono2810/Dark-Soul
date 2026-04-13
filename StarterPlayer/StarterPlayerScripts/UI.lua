@@ -1,7 +1,8 @@
--- LocalScript pour l'UI améliorée (santé, niveau, inventaire, quêtes)
+-- LocalScript pour l'UI améliorée (santé, niveau, inventaire, quêtes, craft)
 local player = game.Players.LocalPlayer
 local InventoryModule = require(game.ReplicatedStorage.InventoryModule)
 local QuestModule = require(game.ReplicatedStorage.QuestModule)
+local CraftModule = require(game.ReplicatedStorage.CraftModule)
 
 -- Créer une GUI
 local screenGui = Instance.new("ScreenGui")
@@ -44,11 +45,29 @@ invFrame.Position = UDim2.new(0.5, -200, 0.5, -150)
 invFrame.Visible = false
 invFrame.Parent = screenGui
 
+-- Bouton craft dans l'inventaire
+local craftButton = Instance.new("TextButton")
+craftButton.Size = UDim2.new(0, 100, 0, 50)
+craftButton.Position = UDim2.new(0, 10, 0, 250)
+craftButton.Text = "Craft Greatsword"
+craftButton.Parent = invFrame
+
+craftButton.MouseButton1Click:Connect(function()
+    if CraftModule.CraftItem(player, "Greatsword") then
+        print("Greatsword craftée !")
+        -- Rafraîchir inventaire
+        invFrame.Visible = false
+        invFrame.Visible = true
+    else
+        print("Ingrédients insuffisants.")
+    end
+end)
+
 invButton.MouseButton1Click:Connect(function()
     invFrame.Visible = not invFrame.Visible
     if invFrame.Visible then
         -- Remplir avec items
-        for _, child in pairs(invFrame:GetChildren()) do child:Destroy() end
+        for _, child in pairs(invFrame:GetChildren()) do if child ~= craftButton then child:Destroy() end end
         local inv = InventoryModule.GetInventory(player)
         local y = 10
         for item, qty in pairs(inv) do

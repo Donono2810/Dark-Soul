@@ -1,10 +1,11 @@
--- ModuleScript pour les ennemis (avec quêtes)
+-- ModuleScript pour les ennemis (avec loot drops)
 local EnemyModule = {}
 local QuestModule = require(game.ReplicatedStorage.QuestModule)
 
-function EnemyModule.CreateEnemy(position, expReward, questUpdate)
+function EnemyModule.CreateEnemy(position, expReward, questUpdate, lootTable)
     expReward = expReward or 20
     questUpdate = questUpdate or "KillEnemies"
+    lootTable = lootTable or {["Potion"] = 0.3, ["Sword"] = 0.1} -- Probabilités
     local enemy = Instance.new("Model")
     enemy.Name = "Enemy"
     enemy.Parent = workspace
@@ -29,7 +30,13 @@ function EnemyModule.CreateEnemy(position, expReward, questUpdate)
             local char = player.Character
             if char and char:FindFirstChild("HumanoidRootPart") and (char.HumanoidRootPart.Position - position).Magnitude < 20 then
                 _G.GainExp(player, expReward)
-                QuestModule.UpdateQuest(player, questUpdate, 1) -- Mettre à jour quête
+                QuestModule.UpdateQuest(player, questUpdate, 1)
+                -- Loot drop
+                for item, prob in pairs(lootTable) do
+                    if math.random() < prob then
+                        require(game.ReplicatedStorage.InventoryModule).AddItem(player, item, 1)
+                    end
+                end
             end
         end
         enemy:Destroy()
