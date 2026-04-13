@@ -1,10 +1,12 @@
--- ModuleScript pour les armes (stats différentes)
+-- ModuleScript pour les armes (plus d'options)
 local WeaponModule = {}
 
 local weapons = {
     ["Sword"] = {damage = 20, speed = 1.5},
-    ["Axe"] = {damage = 35, speed = 2.0}, -- Plus lent mais plus fort
-    ["Dagger"] = {damage = 15, speed = 1.0} -- Rapide mais faible
+    ["Axe"] = {damage = 35, speed = 2.0},
+    ["Dagger"] = {damage = 15, speed = 1.0},
+    ["Greatsword"] = {damage = 50, speed = 2.5}, -- Très lente mais puissante
+    ["Bow"] = {damage = 25, speed = 1.2, ranged = true} -- À distance (pas implémenté pleinement)
 }
 
 function WeaponModule.GetWeaponStats(weaponName)

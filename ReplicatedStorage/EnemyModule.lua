@@ -1,8 +1,10 @@
--- ModuleScript pour les ennemis (avec gain d'exp)
+-- ModuleScript pour les ennemis (avec quêtes)
 local EnemyModule = {}
+local QuestModule = require(game.ReplicatedStorage.QuestModule)
 
-function EnemyModule.CreateEnemy(position, expReward)
+function EnemyModule.CreateEnemy(position, expReward, questUpdate)
     expReward = expReward or 20
+    questUpdate = questUpdate or "KillEnemies"
     local enemy = Instance.new("Model")
     enemy.Name = "Enemy"
     enemy.Parent = workspace
@@ -27,6 +29,7 @@ function EnemyModule.CreateEnemy(position, expReward)
             local char = player.Character
             if char and char:FindFirstChild("HumanoidRootPart") and (char.HumanoidRootPart.Position - position).Magnitude < 20 then
                 _G.GainExp(player, expReward)
+                QuestModule.UpdateQuest(player, questUpdate, 1) -- Mettre à jour quête
             end
         end
         enemy:Destroy()

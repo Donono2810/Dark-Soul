@@ -1,18 +1,20 @@
--- Script pour initialiser le jeu (ennemis, boss, items)
+-- Script pour initialiser le jeu (ennemis, boss, items, sauvegarde)
 local EnemyModule = require(game.ReplicatedStorage.EnemyModule)
 local BossModule = require(game.ReplicatedStorage.BossModule)
 local InventoryModule = require(game.ReplicatedStorage.InventoryModule)
+local SaveModule = require(game.ReplicatedStorage.SaveModule)
 
 -- Placer ennemis
-EnemyModule.CreateEnemy(Vector3.new(10, 0, 10), 20)
-EnemyModule.CreateEnemy(Vector3.new(-10, 0, -10), 20)
-EnemyModule.CreateEnemy(Vector3.new(0, 0, 20), 20)
+EnemyModule.CreateEnemy(Vector3.new(10, 0, 10), 20, "KillEnemies")
+EnemyModule.CreateEnemy(Vector3.new(-10, 0, -10), 20, "KillEnemies")
+EnemyModule.CreateEnemy(Vector3.new(0, 0, 20), 20, "KillEnemies")
 
 -- Boss
 BossModule.CreateBoss(Vector3.new(0, 0, 30), 200)
 
 -- Donner items de départ aux joueurs
 game.Players.PlayerAdded:Connect(function(player)
+    SaveModule.LoadData(player) -- Charger sauvegarde
     InventoryModule.AddItem(player, "Potion", 3)
     InventoryModule.AddItem(player, "Sword", 1)
     InventoryModule.AddItem(player, "Fireball", 5)
