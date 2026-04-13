@@ -15,8 +15,9 @@ BossModule.CreateBoss(Vector3.new(0, 0, 30), 200)
 -- Donner items de départ aux joueurs
 game.Players.PlayerAdded:Connect(function(player)
     SaveModule.LoadData(player) -- Charger sauvegarde
-    InventoryModule.AddItem(player, "Potion", 3)
+    InventoryModule.AddItem(player, "Potion", 5)
     InventoryModule.AddItem(player, "Sword", 1)
+    InventoryModule.AddItem(player, "Dagger", 1)
     InventoryModule.AddItem(player, "Fireball", 5)
     InventoryModule.AddItem(player, "ShieldSpell", 3)
     InventoryModule.AddItem(player, "HealSpell", 3)

@@ -20,6 +20,11 @@ teleporter3.Touched:Connect(function(hit)
         EnemyModule.CreateEnemy(Vector3.new(410, 0, 0), "Goblin", "KillGoblins")
         EnemyModule.CreateEnemy(Vector3.new(390, 0, 10), "Goblin", "KillGoblins")
         EnemyModule.CreateEnemy(Vector3.new(420, 0, -10), "Goblin", "KillGoblins")
-        BossModule.CreateBoss(Vector3.new(400, 0, 20), 300) -- Boss Zone 3
+        EnemyModule.CreateEnemy(Vector3.new(405, 0, 25), "Goblin", "KillGoblins")
+        EnemyModule.CreateEnemy(Vector3.new(395, 0, -25), "Goblin", "KillGoblins")
+        -- Placer plusieurs boss
+        BossModule.CreateBoss(Vector3.new(400, 0, 20), 350) -- Boss 1 Zone 3
+        BossModule.CreateBoss(Vector3.new(420, 0, 40), 380) -- Boss 2 Zone 3
+        BossModule.CreateBoss(Vector3.new(380, 0, 35), 350) -- Boss 3 Zone 3
     end
 end)

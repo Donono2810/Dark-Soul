@@ -29,9 +29,14 @@ dungeonDoor.Touched:Connect(function(hit)
                 end
             end)
         end
-        -- Ennemis dans donjon
-        EnemyModule.CreateEnemy(Vector3.new(260, 0, 0), 40, "KillEnemies", {["Potion"] = 0.5, ["Axe"] = 0.2})
-        EnemyModule.CreateEnemy(Vector3.new(280, 0, 10), 40, "KillEnemies", {["Potion"] = 0.5, ["Axe"] = 0.2})
-        BossModule.CreateBoss(Vector3.new(300, 0, 0), 500) -- Boss final
+        -- Ennemis variés dans donjon
+        EnemyModule.CreateEnemy(Vector3.new(260, 0, 0), "Basic", "KillEnemies")
+        EnemyModule.CreateEnemy(Vector3.new(280, 0, 10), "Orc", "KillEnemies")
+        EnemyModule.CreateEnemy(Vector3.new(270, 0, -10), "Skeleton", "KillEnemies")
+        EnemyModule.CreateEnemy(Vector3.new(290, 0, 5), "Goblin", "KillEnemies")
+        -- Plusieurs boss finaux
+        BossModule.CreateBoss(Vector3.new(300, 0, 0), 550) -- Boss donjon 1
+        BossModule.CreateBoss(Vector3.new(320, 0, 20), 600) -- Boss donjon 2
+        BossModule.CreateBoss(Vector3.new(280, 0, 25), 550) -- Boss donjon 3
     end
 end)

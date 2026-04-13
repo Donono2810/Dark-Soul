@@ -21,6 +21,11 @@ teleporter5.Touched:Connect(function(hit)
         EnemyModule.CreateEnemy(Vector3.new(790, 0, 10), "Goblin", "KillEnemies")
         EnemyModule.CreateEnemy(Vector3.new(820, 0, -10), "Orc", "KillEnemies")
         EnemyModule.CreateEnemy(Vector3.new(780, 0, -20), "Skeleton", "KillEnemies")
-        BossModule.CreateBoss(Vector3.new(800, 0, 40), 600) -- Boss final ultime
+        EnemyModule.CreateEnemy(Vector3.new(830, 0, 15), "Orc", "KillEnemies")
+        EnemyModule.CreateEnemy(Vector3.new(770, 0, 5), "Goblin", "KillEnemies")
+        -- Placer plusieurs boss ultimes
+        BossModule.CreateBoss(Vector3.new(800, 0, 40), 650) -- Boss final 1
+        BossModule.CreateBoss(Vector3.new(830, 0, 60), 700) -- Boss final 2
+        BossModule.CreateBoss(Vector3.new(770, 0, 55), 650) -- Boss final 3
     end
 end)

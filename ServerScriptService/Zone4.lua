@@ -20,9 +20,14 @@ teleporter4.Touched:Connect(function(hit)
         -- Ennemis : Orcs
         EnemyModule.CreateEnemy(Vector3.new(610, 0, 0), "Orc", "KillOrcs")
         EnemyModule.CreateEnemy(Vector3.new(590, 0, 10), "Orc", "KillOrcs")
+        EnemyModule.CreateEnemy(Vector3.new(620, 0, 20), "Orc", "KillOrcs")
         -- Skeletons pour collecte
         EnemyModule.CreateEnemy(Vector3.new(620, 0, -10), "Skeleton", "CollectBones")
         EnemyModule.CreateEnemy(Vector3.new(580, 0, -20), "Skeleton", "CollectBones")
-        BossModule.CreateBoss(Vector3.new(600, 0, 30), 400) -- Boss Zone 4
+        EnemyModule.CreateEnemy(Vector3.new(600, 0, -30), "Skeleton", "CollectBones")
+        -- Placer plusieurs boss
+        BossModule.CreateBoss(Vector3.new(600, 0, 30), 450) -- Boss 1 Zone 4
+        BossModule.CreateBoss(Vector3.new(630, 0, 50), 480) -- Boss 2 Zone 4
+        BossModule.CreateBoss(Vector3.new(570, 0, 45), 450) -- Boss 3 Zone 4
     end
 end)
