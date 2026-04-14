@@ -2,6 +2,7 @@
 local BossModule = {}
 local EnemyModule = require(game.ReplicatedStorage.EnemyModule)
 local BuffModule = require(game.ReplicatedStorage.BuffModule)
+local MultiplayerModule = require(game.ReplicatedStorage.MultiplayerModule)
 
 function BossModule.CreateBoss(position, expReward)
     expReward = expReward or 200
@@ -17,8 +18,9 @@ function BossModule.CreateBoss(position, expReward)
     humanoidRootPart.Parent = boss
     
     local humanoid = Instance.new("Humanoid")
-    humanoid.Health = 500
-    humanoid.MaxHealth = 500
+    local healthScale = MultiplayerModule.GetBossHealthScale()
+    humanoid.Health = math.floor(500 * healthScale)
+    humanoid.MaxHealth = math.floor(500 * healthScale)
     humanoid.WalkSpeed = 15
     humanoid.Parent = boss
     
@@ -45,9 +47,10 @@ function BossModule.CreateBoss(position, expReward)
                     humanoid:MoveTo(char.HumanoidRootPart.Position)
                     wait(1.5)
                     if distance < 5 then
+                        local bossScale = MultiplayerModule.GetBossHealthScale()
                         if humanoid.Health > 350 then
                             -- Phase 1: Attaque basique + poison
-                            char.Humanoid:TakeDamage(50)
+                            char.Humanoid:TakeDamage(math.floor(50 * bossScale))
                             BuffModule.ApplyPoison(player, char)
                         elseif humanoid.Health > 150 then
                             -- Phase 2: Attaque AoE + stun
@@ -56,7 +59,7 @@ function BossModule.CreateBoss(position, expReward)
                             for _, p in pairs(allPlayers) do
                                 local c = p.Character
                                 if c and c:FindFirstChild("HumanoidRootPart") and (c.HumanoidRootPart.Position - pos).Magnitude < 10 then
-                                    c.Humanoid:TakeDamage(40)
+                                    c.Humanoid:TakeDamage(math.floor(40 * bossScale))
                                     c.Humanoid.WalkSpeed = 0
                                     wait(2)
                                     c.Humanoid.WalkSpeed = 16 -- Reset
@@ -65,7 +68,7 @@ function BossModule.CreateBoss(position, expReward)
                         else
                             -- Phase 3: Summon minions + attaque puissante
                             EnemyModule.CreateEnemy(position + Vector3.new(math.random(-10,10), 0, math.random(-10,10)), "Basic")
-                            char.Humanoid:TakeDamage(80)
+                            char.Humanoid:TakeDamage(math.floor(80 * bossScale))
                         end
                         wait(2)
                     end

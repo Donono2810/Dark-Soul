@@ -9,6 +9,7 @@ local ClassModule = require(game.ReplicatedStorage.ClassModule)
 local AnimationModule = require(game.ReplicatedStorage.AnimationModule)
 local StaminaModule = require(game.ReplicatedStorage.StaminaModule)
 local ItemModule = require(game.ReplicatedStorage.ItemModule)
+local MultiplayerModule = require(game.ReplicatedStorage.MultiplayerModule)
 local uis = game:GetService("UserInputService")
 
 StaminaModule.Init(player)
@@ -71,14 +72,24 @@ mouse.Button1Down:Connect(function()
         AnimationModule.PlayAttackAnimation(character, weapon)
         
         -- Détection d'ennemis proches
-        local enemies = workspace:GetChildren()
-        for _, enemy in pairs(enemies) do
-            if enemy:IsA("Model") and enemy:FindFirstChild("Humanoid") and (enemy.HumanoidRootPart.Position - character.HumanoidRootPart.Position).Magnitude < 5 then
-                enemy.Humanoid:TakeDamage(finalDamage)
-                
-                -- Lifesteal
-                if lifesteal > 0 then
-                    humanoid.Health = math.min(humanoid.Health + (finalDamage * lifesteal / 100), humanoid.MaxHealth)
+        local targets = workspace:GetChildren()
+        for _, target in pairs(targets) do
+            if target:IsA("Model") and target:FindFirstChild("Humanoid") and target:FindFirstChild("HumanoidRootPart") then
+                local distance = (target.HumanoidRootPart.Position - character.HumanoidRootPart.Position).Magnitude
+                if distance < 5 then
+                    local playerTarget = game.Players:GetPlayerFromCharacter(target)
+                    if playerTarget then
+                        if MultiplayerModule.IsPvP() and target ~= character then
+                            target.Humanoid:TakeDamage(finalDamage)
+                        end
+                    else
+                        target.Humanoid:TakeDamage(finalDamage)
+                    end
+                    
+                    -- Lifesteal
+                    if lifesteal > 0 then
+                        humanoid.Health = math.min(humanoid.Health + (finalDamage * lifesteal / 100), humanoid.MaxHealth)
+                    end
                 end
             end
         end
@@ -86,7 +97,6 @@ mouse.Button1Down:Connect(function()
 end)
 
 -- Capacité spéciale par classe (touche T)
-local uis = game:GetService("UserInputService")
 uis.InputBegan:Connect(function(input, gameProcessed)
     if gameProcessed then return end
     if input.KeyCode == Enum.KeyCode.T then
