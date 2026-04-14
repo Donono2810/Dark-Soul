@@ -1,5 +1,7 @@
--- Script pour gérer un boss (avec exp)
+-- Script pour gérer un boss (avec exp et compétences)
 local BossModule = {}
+local EnemyModule = require(game.ReplicatedStorage.EnemyModule)
+local BuffModule = require(game.ReplicatedStorage.BuffModule)
 
 function BossModule.CreateBoss(position, expReward)
     expReward = expReward or 200
@@ -32,7 +34,7 @@ function BossModule.CreateBoss(position, expReward)
         boss:Destroy()
     end)
     
-    -- Phases
+    -- Phases avec compétences
     local function AttackPlayer()
         local players = game.Players:GetPlayers()
         for _, player in pairs(players) do
@@ -43,8 +45,28 @@ function BossModule.CreateBoss(position, expReward)
                     humanoid:MoveTo(char.HumanoidRootPart.Position)
                     wait(1.5)
                     if distance < 5 then
-                        local damage = humanoid.Health > 250 and 50 or 80
-                        char.Humanoid:TakeDamage(damage)
+                        if humanoid.Health > 350 then
+                            -- Phase 1: Attaque basique + poison
+                            char.Humanoid:TakeDamage(50)
+                            BuffModule.ApplyPoison(player, char)
+                        elseif humanoid.Health > 150 then
+                            -- Phase 2: Attaque AoE + stun
+                            local pos = char.HumanoidRootPart.Position
+                            local allPlayers = game.Players:GetPlayers()
+                            for _, p in pairs(allPlayers) do
+                                local c = p.Character
+                                if c and c:FindFirstChild("HumanoidRootPart") and (c.HumanoidRootPart.Position - pos).Magnitude < 10 then
+                                    c.Humanoid:TakeDamage(40)
+                                    c.Humanoid.WalkSpeed = 0
+                                    wait(2)
+                                    c.Humanoid.WalkSpeed = 16 -- Reset
+                                end
+                            end
+                        else
+                            -- Phase 3: Summon minions + attaque puissante
+                            EnemyModule.CreateEnemy(position + Vector3.new(math.random(-10,10), 0, math.random(-10,10)), "Basic")
+                            char.Humanoid:TakeDamage(80)
+                        end
                         wait(2)
                     end
                 end
@@ -54,7 +76,7 @@ function BossModule.CreateBoss(position, expReward)
     
     while humanoid.Health > 0 do
         AttackPlayer()
-        wait(2)
+        wait(3)
     end
 end
 

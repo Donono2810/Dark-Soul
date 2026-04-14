@@ -47,8 +47,8 @@ Ce projet est un jeu Roblox ultra-méga-complet inspiré de Dark Souls avec 5 cl
 - **Quêtes** : Différentes par zone avec récompenses.
 - **Zones** : 5 niveaux avec monstres variés, **multiples boss par zone**.
 - **Sauvegarde** : Persistance niveau/exp/inventaire.
-- **Loot** : Drops aléatoires.
-- **Ennemis** : Basic, Goblin, Orc, Skeleton avec stats différentes.
+- **Boss** : Phases avec compétences (poison, AoE stun, summon).
+- **Ennemis** : Basic (aucune compétence), Goblin (poison), Orc (stun), Skeleton (summon) avec stats différentes.
 - **Animations d'attaques** : Animations spécifiques par arme pour plus d'immersion.
 - **Tenues différentes** : Apparence du personnage change selon la classe choisie (couleurs distinctes).
 - **Stamina** : Système de stamina limitant attaques et capacités spéciales.

@@ -1,46 +1,14 @@
 -- ModuleScript pour les ennemis (types variés)
 local EnemyModule = {}
 local QuestModule = require(game.ReplicatedStorage.QuestModule)
-
-local enemyTypes = {
-    ["Basic"] = {health = 150, damage = 30, speed = 10, exp = 20, loot = {["Potion"] = 0.3}},
-    ["Goblin"] = {health = 100, damage = 20, speed = 15, exp = 15, loot = {["Dagger"] = 0.2}}, -- Rapide
-    ["Orc"] = {health = 200, damage = 40, speed = 8, exp = 30, loot = {["Axe"] = 0.3}}, -- Fort
-    ["Skeleton"] = {health = 120, damage = 25, speed = 12, exp = 25, loot = {["Bow"] = 0.2}} -- Magique
-}
-
-function EnemyModule.CreateEnemy(position, enemyType, questUpdate)
-    enemyType = enemyType or "Basic"
-    questUpdate = questUpdate or "KillEnemies"
-    local stats = enemyTypes[enemyType]
-    local enemy = Instance.new("Model")
-    enemy.Name = enemyType
-    enemy.Parent = workspace
-    
-    local humanoidRootPart = Instance.new("Part")
-    humanoidRootPart.Name = "HumanoidRootPart"
-    humanoidRootPart.Size = Vector3.new(2, 2, 1)
-    humanoidRootPart.Position = position
-    humanoidRootPart.Anchored = false
-    humanoidRootPart.BrickColor = enemyType == "Goblin" and BrickColor.new("Bright green") or enemyType == "Orc" and BrickColor.new("Brown") or enemyType == "Skeleton" and BrickColor.new("White") or BrickColor.new("Red")
-    humanoidRootPart.Parent = enemy
-    
-    local humanoid = Instance.new("Humanoid")
-    humanoid.Health = stats.health
-    humanoid.MaxHealth = stats.health
-    humanoid.WalkSpeed = stats.speed
-    humanoid.Parent = enemy
-    
--- ModuleScript pour les ennemis (types variés)
-local EnemyModule = {}
-local QuestModule = require(game.ReplicatedStorage.QuestModule)
 local SideQuestModule = require(game.ReplicatedStorage.SideQuestModule)
+local BuffModule = require(game.ReplicatedStorage.BuffModule)
 
 local enemyTypes = {
-    ["Basic"] = {health = 150, damage = 30, speed = 10, exp = 20, loot = {["Potion"] = 0.3}},
-    ["Goblin"] = {health = 100, damage = 20, speed = 15, exp = 15, loot = {["Dagger"] = 0.2}}, -- Rapide
-    ["Orc"] = {health = 200, damage = 40, speed = 8, exp = 30, loot = {["Axe"] = 0.3}}, -- Fort
-    ["Skeleton"] = {health = 120, damage = 25, speed = 12, exp = 25, loot = {["Bow"] = 0.2}} -- Magique
+    ["Basic"] = {health = 150, damage = 30, speed = 10, exp = 20, loot = {["Potion"] = 0.3}, ability = "Aucune"},
+    ["Goblin"] = {health = 100, damage = 20, speed = 15, exp = 15, loot = {["Dagger"] = 0.2}, ability = "Poison (10% chance, inflige 5 dmg/s pendant 10s)"}, -- Rapide
+    ["Orc"] = {health = 200, damage = 40, speed = 8, exp = 30, loot = {["Axe"] = 0.3}, ability = "Stun (20% chance, immobilise 3s)"}, -- Fort
+    ["Skeleton"] = {health = 120, damage = 25, speed = 12, exp = 25, loot = {["Bow"] = 0.2}, ability = "Summon (30% chance, invoque un Basic)"} -- Magique
 }
 
 function EnemyModule.CreateEnemy(position, enemyType, questUpdate)
@@ -88,7 +56,7 @@ function EnemyModule.CreateEnemy(position, enemyType, questUpdate)
         enemy:Destroy()
     end)
     
-    -- Comportement
+    -- Comportement avec compétences
     local function AttackPlayer()
         local players = game.Players:GetPlayers()
         for _, player in pairs(players) do
@@ -98,6 +66,34 @@ function EnemyModule.CreateEnemy(position, enemyType, questUpdate)
                 if distance < 10 then
                     humanoid:MoveTo(char.HumanoidRootPart.Position)
                     wait(2)
+                    if distance < 5 then
+                        char.Humanoid:TakeDamage(stats.damage)
+                        -- Appliquer compétence
+                        if enemyType == "Goblin" and math.random() < 0.1 then
+                            BuffModule.ApplyPoison(player, char)
+                        elseif enemyType == "Orc" and math.random() < 0.2 then
+                            -- Stun : immobiliser
+                            char.Humanoid.WalkSpeed = 0
+                            wait(3)
+                            char.Humanoid.WalkSpeed = 16 -- Reset (assume default)
+                        elseif enemyType == "Skeleton" and math.random() < 0.3 then
+                            -- Summon Basic
+                            EnemyModule.CreateEnemy(position + Vector3.new(math.random(-5,5), 0, math.random(-5,5)), "Basic")
+                        end
+                    end
+                end
+            end
+        end
+    end
+    
+    -- Boucle d'attaque
+    while humanoid.Health > 0 do
+        AttackPlayer()
+        wait(3)
+    end
+end
+
+return EnemyModule
                     if distance < 3 then
                         char.Humanoid:TakeDamage(stats.damage)
                     end
