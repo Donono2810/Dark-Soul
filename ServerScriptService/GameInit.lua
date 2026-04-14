@@ -81,6 +81,35 @@ for _, itemInfo in ipairs(secretItems) do
     end)
 end
 
+-- Partie du magasin
+local shopPart = Instance.new("Part")
+shopPart.Size = Vector3.new(4, 2, 4)
+shopPart.Position = Vector3.new(0, 0, -50) -- Près du spawn
+shopPart.Anchored = true
+shopPart.BrickColor = BrickColor.new("Bright green")
+shopPart.Name = "Shop"
+shopPart.Parent = workspace
+
+-- Ajouter une étiquette
+local shopLabel = Instance.new("SurfaceGui")
+shopLabel.Face = Enum.NormalId.Top
+shopLabel.Parent = shopPart
+
+local textLabel = Instance.new("TextLabel")
+textLabel.Size = UDim2.new(1, 0, 1, 0)
+textLabel.Text = "Magasin\nTouchez pour ouvrir"
+textLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+textLabel.BackgroundTransparency = 1
+textLabel.TextScaled = true
+textLabel.Parent = shopLabel
+
+shopPart.Touched:Connect(function(hit)
+    local player = game.Players:GetPlayerFromCharacter(hit.Parent)
+    if player then
+        _G.OpenShopForPlayer(player)
+    end
+end)
+
 -- Donner items de départ aux joueurs
 game.Players.PlayerAdded:Connect(function(player)
     SaveModule.LoadData(player) -- Charger sauvegarde
@@ -91,4 +120,14 @@ game.Players.PlayerAdded:Connect(function(player)
     InventoryModule.AddItem(player, "ShieldSpell", 3)
     InventoryModule.AddItem(player, "HealSpell", 3)
     InventoryModule.EquipItem(player, "Sword")
+
+    -- Ajouter de l'or de départ
+    local playerData = player:FindFirstChild("PlayerData") or Instance.new("Folder")
+    playerData.Name = "PlayerData"
+    playerData.Parent = player
+
+    local gold = playerData:FindFirstChild("Gold") or Instance.new("IntValue")
+    gold.Name = "Gold"
+    gold.Value = 500 -- Or de départ
+    gold.Parent = playerData
 end)

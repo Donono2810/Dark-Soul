@@ -240,6 +240,15 @@ Le jeu contient des items cachés dans chaque zone et le donjon secret. Explorez
 
 Récompenses : Or, expérience, potions, équipements rares et légendaires.
 
+## Magasin
+
+Le jeu dispose d'un magasin où les joueurs peuvent acheter des armes, armures et items avec de l'or gagné en jeu.
+
+- **Localisation** : Partie verte près du spawn (0,0,-50).
+- **Comment utiliser** : Touchez la partie pour ouvrir l'interface du magasin.
+- **Articles disponibles** : Épées, dagues, armures, potions, sorts, etc. avec prix variés.
+- **Devise** : Or (500 or de départ).
+
 Importez dans Roblox Studio pour jouer !
 
 📖 **[👉 LIRE LE GUIDE D'IMPORTATION 👈](INSTALLATION.md)**
