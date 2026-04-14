@@ -160,6 +160,41 @@ Ce projet est un jeu Roblox ultra-méga-complet inspiré de Dark Souls avec 5 cl
 - **Interface Utilisateur Améliorée** : Menus plus intuitifs avec tooltips détaillés.
 - **Support Multilingue** : Traductions pour atteindre un public plus large.
 - **Scripts Côté Client et Serveur** : PlayerInputHandler.lua (gestion des entrées joueur), GameLogicManager.lua (logique serveur et sauvegarde), UIManager.lua (interface utilisateur).
+- **Système de Combos** : Chaînes d'attaques avec bonus de dégâts.
+- **Parade et Contre-Attaque** : Mécanique de parade pour bloquer et riposter.
+- **Armes à Deux Mains** : Grandes armes avec dégâts élevés mais lenteur.
+- **Boucliers Réactifs** : Boucliers absorbant les dégâts et poussant les ennemis.
+- **Attaques Chargées** : Coups puissants avec délai de charge.
+- **Ressources Dynamiques** : Collecte avec rareté variable.
+- **Échoppes NPC Interactives** : Magasins avec prix fluctuants.
+- **Recyclage d'Items** : Désassembler pour matériaux.
+- **Commerce Inter-Serveurs** : Échange global d'items.
+- **Taxes et Impôts** : Système économique avec taxes.
+- **Zones Secrètes** : Aires cachées via puzzles.
+- **Cartes Interactives** : Mini-map avec marqueurs.
+- **Exploration Sous-Marine** : Zones aquatiques avec oxygène.
+- **Indices et Lore** : Objets révélant l'histoire.
+- **Téléporteurs Aléatoires** : Portails imprévisibles.
+- **Guildes avec Territoires** : Contrôle de zones avec batailles.
+- **Système d'Alliances** : Formations temporaires.
+- **Événements PvP en Équipe** : Tournois par équipes.
+- **Système de Parrainage** : Récompenses pour inviter amis.
+- **Chat Vocal In-Game** : Communication pour groupes.
+- **Effets Sonores Environnementaux** : Sons dynamiques.
+- **Animations de Mort Personnalisées** : Selon la cause.
+- **Système de Saison** : Changements visuels annuels.
+- **Objets Interactifs** : Environnements utilisables.
+- **Mode Histoire Étendu** : Branches narratives.
+- **Système d'Achievements** : Récompenses pour milestones.
+- **Défis Journaliers Rotatifs** : Objectifs changeants.
+- **Mode Difficile** : Ennemis plus forts, moins de checkpoints.
+- **Système de Héritage** : Hériter des stats.
+- **Quêtes Dynamiques** : Générées procéduralement.
+- **Tutoriels Interactifs** : Guides pas-à-pas.
+- **Options d'Accessibilité** : Réglages pour tous.
+- **Sauvegarde Instantanée** : Points fréquents.
+- **Statistiques Détaillées** : Tableaux personnels.
+- **Mode Spectateur Amélioré** : Suivre plusieurs joueurs.
 
 ## Contrôles
 - Clic gauche : Attaquer (coûte 20 stamina).
