@@ -77,8 +77,13 @@ function QuestModule.UpdateQuest(player, questName, amount)
         if playerQuests[player.UserId][questName].progress >= playerQuests[player.UserId][questName].required then
             -- Récompense
             local InventoryModule = require(game.ReplicatedStorage.InventoryModule)
+            local LevelingModule = require(game.ReplicatedStorage.LevelingModule)
             for item, qty in pairs(questData[questName].reward) do
-                InventoryModule.AddItem(player, item, qty)
+                if item == "Experience" then
+                    LevelingModule.AddXP(player, qty)
+                else
+                    InventoryModule.AddItem(player, item, qty)
+                end
             end
             playerQuests[player.UserId][questName] = nil -- Terminer quête
             print("Quête " .. questName .. " terminée ! Récompenses ajoutées.")
@@ -101,3 +106,64 @@ end
 function QuestModule.GetQuestReward(questName)
     return questData[questName] and questData[questName].reward or {}
 end
+
+-- Fonction pour générer des quêtes dynamiques
+function QuestModule.GenerateDynamicQuest(player)
+    local questTypes = {
+        "KillEnemies",
+        "CollectItems",
+        "ExploreZone",
+        "CraftItem"
+    }
+
+    local randomType = questTypes[math.random(1, #questTypes)]
+    local questName = "Dynamic" .. randomType .. math.random(1000, 9999)
+
+    if randomType == "KillEnemies" then
+        local enemyTypes = {"Basic", "Goblin", "Orc", "Skeleton"}
+        local enemy = enemyTypes[math.random(1, #enemyTypes)]
+        local required = math.random(5, 15)
+        questData[questName] = {
+            required = required,
+            reward = {["Potion"] = math.random(1, 3), ["Gold"] = math.random(50, 150)},
+            description = "Tuer " .. required .. " " .. enemy .. "s",
+            type = "kill",
+            target = enemy
+        }
+    elseif randomType == "CollectItems" then
+        local items = {"CrystalShard", "Bone", "Herb", "Ore"}
+        local item = items[math.random(1, #items)]
+        local required = math.random(10, 25)
+        questData[questName] = {
+            required = required,
+            reward = {["Gold"] = math.random(100, 200)},
+            description = "Collecter " .. required .. " " .. item .. "s",
+            type = "collect",
+            target = item
+        }
+    elseif randomType == "ExploreZone" then
+        local zones = {1, 2, 3, 4, 5, 6, 7, 8}
+        local zone = zones[math.random(1, #zones)]
+        questData[questName] = {
+            required = 1,
+            reward = {["Experience"] = math.random(100, 300)},
+            description = "Explorer la Zone " .. zone,
+            type = "explore",
+            target = zone
+        }
+    elseif randomType == "CraftItem" then
+        local crafts = {"Sword", "Potion", "Shield"}
+        local item = crafts[math.random(1, #crafts)]
+        questData[questName] = {
+            required = 1,
+            reward = {["Gold"] = math.random(150, 250)},
+            description = "Fabriquer un " .. item,
+            type = "craft",
+            target = item
+        }
+    end
+
+    return questName
+end
+
+return QuestModule

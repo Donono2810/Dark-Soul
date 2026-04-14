@@ -110,6 +110,43 @@ shopPart.Touched:Connect(function(hit)
     end
 end)
 
+-- Partie pour les quêtes dynamiques
+local questPart = Instance.new("Part")
+questPart.Size = Vector3.new(3, 2, 3)
+questPart.Position = Vector3.new(-20, 0, 0) -- Près du spawn
+questPart.Anchored = true
+questPart.BrickColor = BrickColor.new("Bright blue")
+questPart.Name = "QuestBoard"
+questPart.Parent = workspace
+
+-- Étiquette
+local questLabel = Instance.new("SurfaceGui")
+questLabel.Face = Enum.NormalId.Top
+questLabel.Parent = questPart
+
+local textLabel = Instance.new("TextLabel")
+textLabel.Size = UDim2.new(1, 0, 1, 0)
+textLabel.Text = "Tableau des Quêtes\nTouchez pour une quête dynamique"
+textLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+textLabel.BackgroundTransparency = 1
+textLabel.TextScaled = true
+textLabel.Parent = questLabel
+
+questPart.Touched:Connect(function(hit)
+    local player = game.Players:GetPlayerFromCharacter(hit.Parent)
+    if player then
+        local QuestModule = require(game.ReplicatedStorage.QuestModule)
+        local newQuest = QuestModule.GenerateDynamicQuest(player)
+        QuestModule.StartQuest(player, newQuest)
+
+        local notification = Instance.new("Hint")
+        notification.Text = "Nouvelle quête : " .. QuestModule.GetQuestDescription(newQuest)
+        notification.Parent = player.PlayerGui
+        wait(5)
+        notification:Destroy()
+    end
+end)
+
 -- Donner items de départ aux joueurs
 game.Players.PlayerAdded:Connect(function(player)
     SaveModule.LoadData(player) -- Charger sauvegarde

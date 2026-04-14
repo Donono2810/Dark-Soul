@@ -249,8 +249,21 @@ Le jeu dispose d'un magasin où les joueurs peuvent acheter des armes, armures e
 - **Articles disponibles** : Épées, dagues, armures, potions, sorts, clés, bombes, familiers (loup, aigle, ours, dragon, etc.), montures (cheval, dragon, griffon, etc.) avec prix variés.
 - **Devise** : Or (500 or de départ).
 
-Importez dans Roblox Studio pour jouer !
+## Système de Niveaux
 
-📖 **[👉 LIRE LE GUIDE D'IMPORTATION 👈](INSTALLATION.md)**
+Les joueurs gagnent de l'expérience (XP) en complétant des quêtes et d'autres actions. Monter de niveau améliore les stats (santé, dégâts, mana).
+
+- **Niveaux** : 1 à 10+ avec seuils d'XP croissants.
+- **Récompenses** : Stats boostées automatiquement.
+
+## Quêtes Dynamiques
+
+Le jeu génère des quêtes aléatoires pour varier l'expérience.
+
+- **Types** : Tuer des ennemis, collecter des items, explorer des zones, crafter des objets.
+- **Tableau des Quêtes** : Partie bleue près du spawn pour obtenir une nouvelle quête dynamique.
+- **Récompenses** : Or, items, expérience.
+
+Importez dans Roblox Studio pour jouer !
 
 ---
