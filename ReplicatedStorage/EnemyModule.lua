@@ -94,18 +94,3 @@ function EnemyModule.CreateEnemy(position, enemyType, questUpdate)
 end
 
 return EnemyModule
-                    if distance < 3 then
-                        char.Humanoid:TakeDamage(stats.damage)
-                    end
-                end
-            end
-        end
-    end
-    
-    while humanoid.Health > 0 do
-        AttackPlayer()
-        wait(3)
-    end
-end
-
-return EnemyModule

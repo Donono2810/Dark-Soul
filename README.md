@@ -130,6 +130,35 @@ Ce projet est un jeu Roblox ultra-méga-complet inspiré de Dark Souls avec 5 cl
 - **Mode Histoire ou Campagne** : Mode narratif avec 10 chapitres, cinématiques (caméra scriptée, dialogues, choix), objectifs principaux/secondaires, événements aléatoires et récompenses progressives.
 - **Économie Dynamique** : Prix fluctuants pour les items, marché joueur avec taxes.
 - **Classement PvP** : Top kills affiché en jeu avec un tableau de score.
+- **Système de Roulade/Dodge** : Mécanique de roulade pour éviter les attaques avec cooldown.
+- **Magie Avancée** : Sorts élémentaires (feu, glace, foudre) avec combos et effets visuels.
+- **Combat Coopératif** : Permettre aux joueurs de se grouper pour combattre ennemis ou boss.
+- **Mode Spectateur** : Observer les combats PvP ou raids sans participer.
+- **Système de Fatigue** : Réduction des stats après combats prolongés, forçant les pauses.
+- **Nouveaux Niveaux/Donjons** : Zones thématiques avec ennemis uniques et boss.
+- **Armes et Armures Légendaires** : Équipements rares avec effets spéciaux.
+- **Événements Saisonniers** : Thèmes temporaires avec monstres et récompenses spéciales.
+- **Mode Multijoueur Asynchrone** : Raids partagés où les joueurs contribuent sur plusieurs sessions.
+- **Objets Cosmétiques** : Skins, effets de particules et animations personnalisées.
+- **Arbre de Compétences** : Débloquer des capacités passives comme bonus de santé ou dégâts.
+- **Système de Niveaux Avancés** : Niveaux d'âme au-delà de 100 avec boosts uniques.
+- **Récompenses Quotidiennes/Hebdomadaires** : Cadeaux automatiques pour fidéliser les joueurs.
+- **Défis Hebdomadaires** : Objectifs spéciaux avec récompenses exclusives.
+- **Système de Réputation Étendu** : Plus de factions avec quêtes croisées et alliances.
+- **Cinématiques Interactives** : Scènes narratives où les choix influencent l'histoire.
+- **Musique Dynamique** : Changement de bande-son selon l'intensité du combat ou environnement.
+- **Effets Météorologiques** : Pluie, brouillard ou tempêtes affectant visibilité et gameplay.
+- **Dialogues NPC Enrichis** : Conversations ramifiées révélant secrets et quêtes.
+- **Mode Photo** : Prendre des captures d'écran in-game avec filtres.
+- **Système d'Amis Étendu** : Invitations à groupes, partage d'inventaires et messages privés.
+- **Tournois PvP** : Événements compétitifs avec classements et prix.
+- **Système de Mentorat** : Joueurs expérimentés guidant les novices via tutoriels.
+- **Échange entre Joueurs** : Marché sécurisé pour vendre/échanger items rares.
+- **Communauté Intégrée** : Forums ou chats in-game pour discuter stratégies.
+- **Contrôles Personnalisables** : Mapper les touches selon préférences.
+- **Sauvegarde Automatique** : Points de contrôle fréquents pour éviter perte de progrès.
+- **Interface Utilisateur Améliorée** : Menus plus intuitifs avec tooltips détaillés.
+- **Support Multilingue** : Traductions pour atteindre un public plus large.
 
 ## Contrôles
 - Clic gauche : Attaquer (coûte 20 stamina).
