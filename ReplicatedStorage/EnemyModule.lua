@@ -8,7 +8,9 @@ local enemyTypes = {
     ["Basic"] = {health = 150, damage = 30, speed = 10, exp = 20, loot = {["Potion"] = 0.3}, ability = "Aucune"},
     ["Goblin"] = {health = 100, damage = 20, speed = 15, exp = 15, loot = {["Dagger"] = 0.2}, ability = "Poison (10% chance, inflige 5 dmg/s pendant 10s)"}, -- Rapide
     ["Orc"] = {health = 200, damage = 40, speed = 8, exp = 30, loot = {["Axe"] = 0.3}, ability = "Stun (20% chance, immobilise 3s)"}, -- Fort
-    ["Skeleton"] = {health = 120, damage = 25, speed = 12, exp = 25, loot = {["Bow"] = 0.2}, ability = "Summon (30% chance, invoque un Basic)"} -- Magique
+    ["Skeleton"] = {health = 120, damage = 25, speed = 12, exp = 25, loot = {['Bow'] = 0.2}, ability = "Summon (30% chance, invoque un Basic)"}, -- Magique
+    ["CrystalGolem"] = {health = 250, damage = 45, speed = 6, exp = 40, loot = {['CrystalShard'] = 0.5, ['FrostHammer'] = 0.1}, ability = "Bouclier (réduit 20% des dégâts)"},
+    ["LavaSpirit"] = {health = 180, damage = 50, speed = 14, exp = 45, loot = {['MagmaCore'] = 0.4, ['Fireball'] = 0.2}, ability = "Brûlure (10 dmg/s pendant 5s)"}
 }
 
 function EnemyModule.CreateEnemy(position, enemyType, questUpdate)

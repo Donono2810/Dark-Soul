@@ -9,6 +9,14 @@ local bossDrops = {
         items = {"Greatsword", "PhoenixPotion", "CrystalShard"},
         chances = {0.3, 0.2, 0.5}
     },
+    ["CrystalColossus"] = {
+        items = {"FrostHammer", "CrystalShard", "DragonScale"},
+        chances = {0.25, 0.6, 0.3}
+    },
+    ["MagmaTitan"] = {
+        items = {"PhoenixPotion", "MagmaCore", "GoldOre"},
+        chances = {0.3, 0.4, 0.5}
+    },
     ["AncientGuardian"] = {
         items = {"DivineShield", "CrystalShard", "DragonScale"},
         chances = {0.2, 0.8, 0.4}
@@ -29,6 +37,12 @@ local bossDrops = {
         items = {"LightningRapier", "VoidEssence", "EtherPotion"},
         chances = {0.1, 0.85, 0.6}
     }
+}
+
+local bossTypes = {
+    ["Boss"] = {baseHealth = 500, baseDamage = 50, walkSpeed = 15, expReward = 200, ability = "Default"},
+    ["CrystalColossus"] = {baseHealth = 900, baseDamage = 70, walkSpeed = 12, expReward = 800, ability = "CrystalShards"},
+    ["MagmaTitan"] = {baseHealth = 1200, baseDamage = 90, walkSpeed = 16, expReward = 1000, ability = "FireBreath"}
 }
 
 local secretBosses = {
@@ -104,10 +118,12 @@ local function distributeLoot(position, bossName)
     end
 end
 
-function BossModule.CreateBoss(position, expReward)
-    expReward = expReward or 200
+function BossModule.CreateBoss(position, expReward, bossType)
+    bossType = bossType or "Boss"
+    local typeData = bossTypes[bossType] or bossTypes["Boss"]
+    expReward = expReward or typeData.expReward
     local boss = Instance.new("Model")
-    boss.Name = "Boss"
+    boss.Name = bossType
     boss.Parent = workspace
 
     local humanoidRootPart = Instance.new("Part")
@@ -119,9 +135,9 @@ function BossModule.CreateBoss(position, expReward)
 
     local humanoid = Instance.new("Humanoid")
     local healthScale = MultiplayerModule.GetBossHealthScale()
-    humanoid.Health = math.floor(500 * healthScale)
-    humanoid.MaxHealth = math.floor(500 * healthScale)
-    humanoid.WalkSpeed = 15
+    humanoid.Health = math.floor(typeData.baseHealth * healthScale)
+    humanoid.MaxHealth = humanoid.Health
+    humanoid.WalkSpeed = typeData.walkSpeed
     humanoid.Parent = boss
 
     humanoid.Died:Connect(function()
@@ -129,7 +145,7 @@ function BossModule.CreateBoss(position, expReward)
         for _, player in ipairs(nearbyPlayers) do
             _G.GainExp(player, expReward)
         end
-        distributeLoot(position, "Boss")
+        distributeLoot(position, bossType)
         boss:Destroy()
     end)
 
@@ -144,15 +160,36 @@ function BossModule.CreateBoss(position, expReward)
                     wait(1.5)
                     if distance < 5 then
                         local bossScale = MultiplayerModule.GetBossHealthScale()
-                        if humanoid.Health > 350 then
-                            char.Humanoid:TakeDamage(math.floor(50 * bossScale))
+                        if typeData.ability == "CrystalShards" then
+                            for i = 1, 4 do
+                                local shard = Instance.new("Part")
+                                shard.Size = Vector3.new(1, 1, 1)
+                                shard.Position = position + Vector3.new(math.random(-10,10), 0, math.random(-10,10))
+                                shard.Anchored = false
+                                shard.BrickColor = BrickColor.new("Institutional white")
+                                shard.Parent = workspace
+                                shard:ApplyAngularImpulse(Vector3.new(math.random(-100,100), math.random(-100,100), math.random(-100,100)))
+                            end
+                            char.Humanoid:TakeDamage(math.floor(typeData.baseDamage * bossScale))
+                        elseif typeData.ability == "FireBreath" then
+                            local firePart = Instance.new("Part")
+                            firePart.Size = Vector3.new(20, 1, 20)
+                            firePart.Position = position + Vector3.new(0, -2, 0)
+                            firePart.Anchored = true
+                            firePart.BrickColor = BrickColor.new("Bright red")
+                            firePart.Parent = workspace
+                            wait(3)
+                            firePart:Destroy()
+                            char.Humanoid:TakeDamage(math.floor(typeData.baseDamage * bossScale))
+                        elseif humanoid.Health > 350 then
+                            char.Humanoid:TakeDamage(math.floor(typeData.baseDamage * bossScale))
                             BuffModule.ApplyPoison(player, char)
                         elseif humanoid.Health > 150 then
                             local pos = char.HumanoidRootPart.Position
                             for _, p in pairs(game.Players:GetPlayers()) do
                                 local c = p.Character
                                 if c and c:FindFirstChild("HumanoidRootPart") and (c.HumanoidRootPart.Position - pos).Magnitude < 10 then
-                                    c.Humanoid:TakeDamage(math.floor(40 * bossScale))
+                                    c.Humanoid:TakeDamage(math.floor((typeData.baseDamage - 10) * bossScale))
                                     c.Humanoid.WalkSpeed = 0
                                     wait(2)
                                     c.Humanoid.WalkSpeed = 16
@@ -160,7 +197,7 @@ function BossModule.CreateBoss(position, expReward)
                             end
                         else
                             EnemyModule.CreateEnemy(position + Vector3.new(math.random(-10,10), 0, math.random(-10,10)), "Basic")
-                            char.Humanoid:TakeDamage(math.floor(80 * bossScale))
+                            char.Humanoid:TakeDamage(math.floor((typeData.baseDamage + 20) * bossScale))
                         end
                         wait(2)
                     end

@@ -21,8 +21,8 @@ local questData = {
     ["ExploreZone1"] = {required = 1, reward = {["Sword"] = 1}, description = "Explorer complètement la Zone 1"},
     ["ExploreZone2"] = {required = 1, reward = {["Fireball"] = 5}, description = "Découvrir les secrets de la Zone 2"},
     ["ExploreZone3"] = {required = 1, reward = {["HealSpell"] = 3}, description = "Cartographier la Zone 3"},
-    ["ExploreZone4"] = {required = 1, reward = {["LightningBolt"] = 2}, description = "Explorer les cavernes de la Zone 4"},
-    ["FindHiddenTreasure"] = {required = 5, reward = {["GoldOre"] = 5}, description = "Trouver 5 trésors cachés"},
+    ["ExploreZone4"] = {required = 1, reward = {["LightningBolt"] = 2}, description = "Explorer les cavernes de la Zone 4"},    ["ExploreZone6"] = {required = 1, reward = {['CrystalShard'] = 10}, description = "Explorer la Caverne de Cristal"},
+    ["ExploreZone7"] = {required = 1, reward = {['MagmaCore'] = 5}, description = "Explorer l'Inferno Magmatique"},    ["FindHiddenTreasure"] = {required = 5, reward = {["GoldOre"] = 5}, description = "Trouver 5 trésors cachés"},
 
     -- Quêtes sociales
     ["RecruitAllies"] = {required = 3, reward = {["AmuletOfStrength"] = 1}, description = "Recruter 3 alliés PNJ"},

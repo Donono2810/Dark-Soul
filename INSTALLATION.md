@@ -118,13 +118,15 @@ Puis suivez la **Méthode 1** pour importer.
 
 Assurez-vous d'avoir importé **TOUS** ces fichiers (sinon le jeu ne fonctionnera pas) :
 
-### ✅ ServerScriptService (7 scripts)
+### ✅ ServerScriptService (9 scripts)
 - [ ] GameInit
 - [ ] ClassHealthManager
 - [ ] Zone2
 - [ ] Zone3
 - [ ] Zone4
 - [ ] Zone5
+- [ ] Zone6
+- [ ] Zone7
 - [ ] Dungeon
 - [ ] NPC
 
