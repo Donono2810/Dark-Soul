@@ -23,7 +23,9 @@ mouse.Button1Down:Connect(function()
     -- Bonus de classe pour les dégâts
     local className = ClassModule.GetPlayerClass(player)
     local classStats = ClassModule.GetClassStats(className)
-    local baseDamage = stats.damage + classStats.damageBonus
+    local multiplier = _G.nextAttackMultiplier or 1
+    _G.nextAttackMultiplier = 1 -- Reset
+    local baseDamage = (stats.damage + classStats.damageBonus) * multiplier
     
     if tick() - lastAttackTime > stats.speed then
         lastAttackTime = tick()
@@ -100,6 +102,71 @@ uis.InputBegan:Connect(function(input, gameProcessed)
                     conn:Disconnect()
                 end
             end)
+        end
+    elseif input.KeyCode == Enum.KeyCode.Y then
+        -- Compétence active par classe
+        local className = ClassModule.GetPlayerClass(player)
+        if className == "Warrior" and StaminaModule.UseStamina(player, 40) then
+            -- Cri de guerre : boost dmg 20s
+            -- Simulé avec un buff temporaire
+            local buffEnd = tick() + 20
+            local originalDamage = ClassModule.GetClassStats(className).damageBonus
+            ClassModule.GetClassStats(className).damageBonus = originalDamage + 10
+            wait(20)
+            ClassModule.GetClassStats(className).damageBonus = originalDamage
+        elseif className == "Mage" and StaminaModule.UseStamina(player, 30) then
+            -- Bouclier magique : absorbe 50 dmg
+            local shieldHealth = 50
+            local conn
+            conn = humanoid.HealthChanged:Connect(function(oldHealth, newHealth)
+                if newHealth < oldHealth then
+                    local damage = oldHealth - newHealth
+                    if shieldHealth > 0 then
+                        local absorbed = math.min(damage, shieldHealth)
+                        shieldHealth = shieldHealth - absorbed
+                        humanoid.Health = humanoid.Health + absorbed
+                        if shieldHealth <= 0 then
+                            conn:Disconnect()
+                        end
+                    end
+                end
+            end)
+            wait(30) -- Durée du bouclier
+            if conn then conn:Disconnect() end
+        elseif className == "Archer" and StaminaModule.UseStamina(player, 25) then
+            -- Tir précis : dmg x2 sur prochain tir
+            -- Simulé en doublant le dmg de la prochaine attaque
+            local nextAttackDoubled = true
+            local conn
+            conn = humanoid:GetPropertyChangedSignal("Health"):Connect(function() -- Placeholder, besoin d'un signal d'attaque
+                -- Pour simplifier, on double le dmg de la prochaine attaque manuellement
+            end)
+            -- Idée : utiliser une variable globale pour multiplier le dmg
+            _G.nextAttackMultiplier = 2
+            wait(10) -- Durée
+            _G.nextAttackMultiplier = 1
+        elseif className == "Rogue" and StaminaModule.UseStamina(player, 50) then
+            -- Invisibilité : 5s
+            for _, part in pairs(character:GetChildren()) do
+                if part:IsA("BasePart") then
+                    part.Transparency = 0.5
+                end
+            end
+            wait(5)
+            for _, part in pairs(character:GetChildren()) do
+                if part:IsA("BasePart") then
+                    part.Transparency = 0
+                end
+            end
+        elseif className == "Paladin" and StaminaModule.UseStamina(player, 60) then
+            -- Jugement : dégâts sacrés AoE
+            local pos = character.HumanoidRootPart.Position
+            local enemies = workspace:GetChildren()
+            for _, enemy in pairs(enemies) do
+                if enemy:IsA("Model") and enemy:FindFirstChild("Humanoid") and (enemy.HumanoidRootPart.Position - pos).Magnitude < 12 then
+                    enemy.Humanoid:TakeDamage(40)
+                end
+            end
         end
     end
 end)

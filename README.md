@@ -4,10 +4,20 @@ Ce projet est un jeu Roblox ultra-méga-complet inspiré de Dark Souls avec 5 cl
 
 ## 5 Classes Jouables
 - **Warrior** (150 HP, +15 dmg, vitesse 12) : Force brute, haute santé, charge brutale, items : Épée, Potions
-- **Mage** (80 HP, +10 dmg, vitesse 10) : Magie puissante, peu de santé, tempête de feu, items : Dague, Fireballs, Potions
+  - Passive : Régénération accrue (HP +5/s)
+  - Active (Y) : Cri de guerre (boost dmg 20s, 40 stamina)
+- **Mage** (80 HP, +10 dmg, vitesse 10) : Magie puissante, low HP, tempête de feu, items : Dague, Fireballs, Potions
+  - Passive : Mana regen +10/s
+  - Active (Y) : Bouclier magique (absorbe 50 dmg, 30 mana)
 - **Archer** (100 HP, +12 dmg, vitesse 15) : Rapide et précis, salve de flèches, items : Arc, Dague, Potions
+  - Passive : Vitesse +2
+  - Active (Y) : Tir précis (dmg x2, 25 stamina)
 - **Rogue** (90 HP, +20 dmg, vitesse 18) : Ultra-rapide, coup fatal, items : 2x Dague, Rapier, Potions
+  - Passive : Esquive +10% (réduit dmg reçu)
+  - Active (Y) : Invisibilité (5s, 50 stamina)
 - **Paladin** (140 HP, +18 dmg, vitesse 11) : Équilibré, aura protectrice, items : Épée, Sorts de protection/heal
+  - Passive : Résistance +10% (réduit dmg reçu)
+  - Active (Y) : Jugement (dégâts sacrés AoE, 60 mana)
 
 ## Capacités Spéciales (Touche T)
 - **Warrior** : Charge brutale (dash + dégâts AoE, 50 stamina).
@@ -43,6 +53,7 @@ Ce projet est un jeu Roblox ultra-méga-complet inspiré de Dark Souls avec 5 cl
 - **Tenues différentes** : Apparence du personnage change selon la classe choisie (couleurs distinctes).
 - **Stamina** : Système de stamina limitant attaques et capacités spéciales.
 - **Capacités spéciales** : Chaque classe a une capacité unique (T pour activer).
+- **Compétences** : Passives (toujours actives) et actives (Y) pour chaque classe.
 - **Buffs/Débuffs** : Effets temporaires comme poison.
 - **Quêtes secondaires** : Missions optionnelles (tuer Gobelins, collecter loots).
 - **HUD amélioré** : Barres de santé et stamina visibles.
@@ -53,6 +64,7 @@ Ce projet est un jeu Roblox ultra-méga-complet inspiré de Dark Souls avec 5 cl
 - Q : Bouclier (réduit dégâts 10s).
 - R : Heal (soigne 50 HP).
 - T : Capacité spéciale de classe (coûte stamina).
+- Y : Compétence active de classe (coûte stamina/mana).
 - E : Potion.
 - Bouton "Inventaire" : Menu avec craft.
 - **Au démarrage** : Écran de sélection de classe (cliquez sur une classe, puis "Confirmer").

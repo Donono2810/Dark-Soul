@@ -121,7 +121,7 @@ end)
 local infoLabel = Instance.new("TextLabel")
 infoLabel.Size = UDim2.new(0, 400, 0, 100)
 infoLabel.Position = UDim2.new(0.5, -200, 1, -120)
-infoLabel.Text = "Classe sélectionnée : " .. selectedClass .. "\nAbilité : " .. classes[selectedClass].specialAbility
+infoLabel.Text = "Classe sélectionnée : " .. selectedClass .. "\nAbilité : " .. classes[selectedClass].specialAbility .. "\nPassive : " .. ClassModule.GetPassiveSkill(selectedClass) .. "\nActive : " .. ClassModule.GetActiveSkill(selectedClass)
 infoLabel.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 infoLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 infoLabel.Parent = screenGui
@@ -130,6 +130,6 @@ infoLabel.Parent = screenGui
 while screenGui.Parent do
     wait(0.5)
     if screenGui.Parent then
-        infoLabel.Text = "Classe sélectionnée : " .. selectedClass .. "\nAbilité : " .. classes[selectedClass].specialAbility
+        infoLabel.Text = "Classe sélectionnée : " .. selectedClass .. "\nAbilité : " .. classes[selectedClass].specialAbility .. "\nPassive : " .. ClassModule.GetPassiveSkill(selectedClass) .. "\nActive : " .. ClassModule.GetActiveSkill(selectedClass)
     end
 end

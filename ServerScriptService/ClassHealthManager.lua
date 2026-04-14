@@ -27,12 +27,33 @@ Players.PlayerAdded:Connect(function(player)
         humanoid.MaxHealth = healthWithClass
         
         -- Bonus de vitesse selon la classe
-        humanoid.WalkSpeed = classStats.speed
+        local baseSpeed = classStats.speed
+        if className == "Archer" then
+            baseSpeed = baseSpeed + 2 -- Passive: Vitesse +2
+        end
+        humanoid.WalkSpeed = baseSpeed
         
-        -- Régénération lente
+        -- Régénération lente avec bonus passif
+        local regenRate = HEALTH_REGEN_RATE
+        if className == "Warrior" then
+            regenRate = regenRate + 5 -- Passive: Régénération accrue
+        end
+        
         local lastDamageTime = 0
-        humanoid.HealthChanged:Connect(function()
+        humanoid.HealthChanged:Connect(function(oldHealth, newHealth)
             lastDamageTime = tick()
+            -- Passive Rogue: Esquive +10% (réduit dmg reçu)
+            if className == "Rogue" and newHealth < oldHealth then
+                local damage = oldHealth - newHealth
+                local reducedDamage = damage * 0.9
+                humanoid.Health = humanoid.Health + (damage - reducedDamage)
+            end
+            -- Passive Paladin: Résistance +10%
+            if className == "Paladin" and newHealth < oldHealth then
+                local damage = oldHealth - newHealth
+                local reducedDamage = damage * 0.9
+                humanoid.Health = humanoid.Health + (damage - reducedDamage)
+            end
         end)
         
         humanoid.Died:Connect(function()
@@ -42,7 +63,7 @@ Players.PlayerAdded:Connect(function(player)
         while true do
             wait(1)
             if tick() - lastDamageTime > HEALTH_REGEN_DELAY and humanoid.Health < humanoid.MaxHealth then
-                humanoid.Health = math.min(humanoid.Health + HEALTH_REGEN_RATE, humanoid.MaxHealth)
+                humanoid.Health = math.min(humanoid.Health + regenRate, humanoid.MaxHealth)
             end
         end
     end
