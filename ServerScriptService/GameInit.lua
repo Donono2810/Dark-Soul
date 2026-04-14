@@ -147,6 +147,114 @@ questPart.Touched:Connect(function(hit)
     end
 end)
 
+-- Table de craft
+local craftPart = Instance.new("Part")
+craftPart.Size = Vector3.new(3, 2, 3)
+craftPart.Position = Vector3.new(20, 0, 0) -- Près du spawn
+craftPart.Anchored = true
+craftPart.BrickColor = BrickColor.new("Bright green")
+craftPart.Name = "CraftingTable"
+craftPart.Parent = workspace
+
+-- Étiquette
+local craftLabel = Instance.new("SurfaceGui")
+craftLabel.Face = Enum.NormalId.Top
+craftLabel.Parent = craftPart
+
+local textLabel = Instance.new("TextLabel")
+textLabel.Size = UDim2.new(1, 0, 1, 0)
+textLabel.Text = "Table de Craft\nTouchez pour ouvrir"
+textLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+textLabel.BackgroundTransparency = 1
+textLabel.TextScaled = true
+textLabel.Parent = craftLabel
+
+craftPart.Touched:Connect(function(hit)
+    local player = game.Players:GetPlayerFromCharacter(hit.Parent)
+    if player then
+        -- Ouvrir une interface de craft simple (pour l'exemple, craft une potion)
+        local CraftModule = require(game.ReplicatedStorage.CraftModule)
+        local success, message = CraftModule.CraftItem(player, "Potion")
+        if not success then
+            local notification = Instance.new("Hint")
+            notification.Text = message
+            notification.Parent = player.PlayerGui
+            wait(3)
+            notification:Destroy()
+        end
+    end
+end)
+
+-- Mode Survie
+local survivalPart = Instance.new("Part")
+survivalPart.Size = Vector3.new(3, 2, 3)
+survivalPart.Position = Vector3.new(0, 0, 20) -- Près du spawn
+survivalPart.Anchored = true
+survivalPart.BrickColor = BrickColor.new("Bright red")
+survivalPart.Name = "SurvivalMode"
+survivalPart.Parent = workspace
+
+-- Étiquette
+local survivalLabel = Instance.new("SurfaceGui")
+survivalLabel.Face = Enum.NormalId.Top
+survivalLabel.Parent = survivalPart
+
+local textLabel = Instance.new("TextLabel")
+textLabel.Size = UDim2.new(1, 0, 1, 0)
+textLabel.Text = "Mode Survie\nTouchez pour commencer"
+textLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+textLabel.BackgroundTransparency = 1
+textLabel.TextScaled = true
+textLabel.Parent = survivalLabel
+
+survivalPart.Touched:Connect(function(hit)
+    local player = game.Players:GetPlayerFromCharacter(hit.Parent)
+    if player then
+        local SurvivalMode = require(game.ReplicatedStorage.SurvivalMode)
+        local success, message = SurvivalMode.StartWave(player, 1)
+        local notification = Instance.new("Hint")
+        notification.Text = message
+        notification.Parent = player.PlayerGui
+        wait(3)
+        notification:Destroy()
+    end
+end)
+
+-- Rejoindre une faction
+local factionPart = Instance.new("Part")
+factionPart.Size = Vector3.new(3, 2, 3)
+factionPart.Position = Vector3.new(-40, 0, 0) -- Près du spawn
+factionPart.Anchored = true
+factionPart.BrickColor = BrickColor.new("Bright yellow")
+factionPart.Name = "FactionJoiner"
+factionPart.Parent = workspace
+
+-- Étiquette
+local factionLabel = Instance.new("SurfaceGui")
+factionLabel.Face = Enum.NormalId.Top
+factionLabel.Parent = factionPart
+
+local textLabel = Instance.new("TextLabel")
+textLabel.Size = UDim2.new(1, 0, 1, 0)
+textLabel.Text = "Rejoindre une Faction\nTouchez pour rejoindre les Chevaliers"
+textLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+textLabel.BackgroundTransparency = 1
+textLabel.TextScaled = true
+textLabel.Parent = factionLabel
+
+factionPart.Touched:Connect(function(hit)
+    local player = game.Players:GetPlayerFromCharacter(hit.Parent)
+    if player then
+        local FactionModule = require(game.ReplicatedStorage.FactionModule)
+        local success, message = FactionModule.JoinFaction(player, "Knights")
+        local notification = Instance.new("Hint")
+        notification.Text = message
+        notification.Parent = player.PlayerGui
+        wait(3)
+        notification:Destroy()
+    end
+end)
+
 -- Donner items de départ aux joueurs
 game.Players.PlayerAdded:Connect(function(player)
     SaveModule.LoadData(player) -- Charger sauvegarde

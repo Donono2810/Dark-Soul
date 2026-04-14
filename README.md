@@ -264,6 +264,27 @@ Le jeu génère des quêtes aléatoires pour varier l'expérience.
 - **Tableau des Quêtes** : Partie bleue près du spawn pour obtenir une nouvelle quête dynamique.
 - **Récompenses** : Or, items, expérience.
 
+## Craft
+
+Système de craft pour créer des items à partir de matériaux.
+
+- **Table de Craft** : Partie verte près du spawn pour crafter des potions (exemple).
+- **Recettes** : Combinaisons d'items pour créer de nouveaux équipements et consommables.
+
+## Mode Survie
+
+Survivez à des vagues d'ennemis croissantes.
+
+- **Zone de Survie** : Partie rouge près du spawn pour démarrer les vagues.
+- **Récompenses** : XP, or, potions en fonction de la vague.
+
+## Factions
+
+Rejoignez des factions pour des buffs et alliances.
+
+- **Rejoindre** : Partie jaune près du spawn pour rejoindre les Chevaliers (exemple).
+- **Buffs** : Bonus de défense, mana, vitesse, etc.
+
 Importez dans Roblox Studio pour jouer !
 
 ---
