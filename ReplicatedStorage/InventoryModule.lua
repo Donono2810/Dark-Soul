@@ -3,12 +3,41 @@ local InventoryModule = {}
 
 local playerInventories = {} -- Stockage par joueur
 local playerEquipment = {} -- Équipement actuel (arme, armure)
+local marketPrices = {} -- Prix dynamiques
 
 function InventoryModule.AddItem(player, itemName, quantity)
     if not playerInventories[player.UserId] then
         playerInventories[player.UserId] = {}
     end
     playerInventories[player.UserId][itemName] = (playerInventories[player.UserId][itemName] or 0) + quantity
+end
+
+function InventoryModule.GetMarketPrice(itemName)
+    return marketPrices[itemName] or 10 -- Prix de base
+end
+
+function InventoryModule.UpdateMarketPrices()
+    -- Fluctuation aléatoire
+    for item, _ in pairs(require(game.ReplicatedStorage.ItemModule).GetAllItems()) do
+        marketPrices[item] = math.random(5, 50)
+    end
+end
+
+function InventoryModule.SellItem(player, itemName, quantity)
+    if playerInventories[player.UserId] and playerInventories[player.UserId][itemName] >= quantity then
+        playerInventories[player.UserId][itemName] = playerInventories[player.UserId][itemName] - quantity
+        local price = InventoryModule.GetMarketPrice(itemName) * quantity
+        -- Add currency (placeholder)
+        return price
+    end
+    return 0
+end
+
+function InventoryModule.BuyItem(player, itemName, quantity)
+    local price = InventoryModule.GetMarketPrice(itemName) * quantity
+    -- Check currency (placeholder)
+    InventoryModule.AddItem(player, itemName, quantity)
+    return price
 end
 
 function InventoryModule.UseItem(player, itemName)

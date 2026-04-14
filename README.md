@@ -118,6 +118,16 @@ Ce projet est un jeu Roblox ultra-méga-complet inspiré de Dark Souls avec 5 cl
 - **Quêtes secondaires** : Missions optionnelles (tuer Gobelins, collecter loots).
 - **Parry** : Système de parade (U) pour réduire les dégâts entrants.
 - **Mode multijoueur** : Choix entre Solo, Coop et PvP via l'interface.
+- **Boutique VIP** : Statut VIP achetable en Robux avec avantages de dégâts et statut spécial.
+- **Système de Réputation et Factions** : 3 factions (Chevaliers, Sorciers, Mercenaires) avec quêtes exclusives et bonus.
+- **Événements Temporaires** : Invasions de boss, raids coopératifs, nuits d'undead avec récompenses spéciales.
+- **Crafting Avancé** : Recettes multi-étapes pour items enchantés (ex. : EnchantedSword, DivineShield).
+- **Personnalisation Visuelle** : Skins débloquables (GoldenKnight VIP, ShadowAssassin rare) avec couleurs personnalisées.
+- **Système de Guildes** : Création/join de guildes, points collectifs, buffs d'équipe.
+- **Mini-Jeux et Défis Quotidiens** : Défis quotidiens (tuer ennemis, collecter items), mini-jeux comme arènes de duel.
+- **Compagnons (Pets)** : Loups, corbeaux, golems apprivoisables avec capacités d'aide en combat.
+- **Mode Survie** : Défense contre vagues d'ennemis croissantes avec récompenses basées sur la survie.
+- **Économie Dynamique** : Prix fluctuants pour les items, marché joueur avec taxes.
 - **Classement PvP** : Top kills affiché en jeu avec un tableau de score.
 
 ## Contrôles

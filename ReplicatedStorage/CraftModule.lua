@@ -44,6 +44,14 @@ local recipes = {
     ["RingOfSpeed"] = {["SilverOre"] = 5, ["CrystalShard"] = 1},
     ["AmuletOfProtection"] = {["GoldOre"] = 3, ["CrystalShard"] = 2},
     ["RingOfMana"] = {["CrystalShard"] = 3},
+
+    -- Recettes avancées multi-étapes
+    ["EnchantedSword"] = {["Sword"] = 1, ["CrystalShard"] = 3, ["Fireball"] = 1}, -- Arme enchantée avec feu
+    ["FrostHammer"] = {["Hammer"] = 1, ["IceSpell"] = 1, ["CrystalShard"] = 2}, -- Marteau de glace
+    ["LightningRapier"] = {["Rapier"] = 1, ["LightningBolt"] = 1, ["GoldOre"] = 2}, -- Rapière électrique
+    ["DivineShield"] = {["GoldShield"] = 1, ["HealSpell"] = 2, ["CrystalShard"] = 5}, -- Bouclier divin
+    ["PhoenixPotion"] = {["MegaPotion"] = 1, ["Fireball"] = 3, ["CrystalShard"] = 1}, -- Potion de résurrection
+    ["ManaCrystal"] = {["EtherPotion"] = 2, ["CrystalShard"] = 5}, -- Cristal de mana permanent
 }
 
 function CraftModule.CraftItem(player, itemName)

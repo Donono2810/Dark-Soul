@@ -13,6 +13,10 @@ local MultiplayerModule = require(game.ReplicatedStorage.MultiplayerModule)
 local uis = game:GetService("UserInputService")
 local pvpHitEvent = game.ReplicatedStorage:WaitForChild("PvpHit")
 
+if player:GetAttribute("IsVip") == nil then
+    player:SetAttribute("IsVip", false)
+end
+
 StaminaModule.Init(player)
 
 local lastAttackTime = 0
@@ -58,8 +62,9 @@ mouse.Button1Down:Connect(function()
     local classStats = ClassModule.GetClassStats(className)
     local multiplier = _G.nextAttackMultiplier or 1
     _G.nextAttackMultiplier = 1 -- Reset
-    local finalDamage = (baseDamage + classStats.damageBonus) * multiplier
-    
+    local vipBonus = player:GetAttribute("IsVip") and 1.2 or 1
+    local finalDamage = (baseDamage + classStats.damageBonus) * multiplier * vipBonus
+
     -- Coup critique
     if math.random(1, 100) <= critChance then
         finalDamage = finalDamage * 1.5 -- 50% bonus crit
