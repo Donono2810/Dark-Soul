@@ -55,6 +55,12 @@ function QuestModule.StartQuest(player, questName)
     end
     if questData[questName] then
         playerQuests[player.UserId][questName] = {progress = 0, required = questData[questName].required}
+        -- Spécial pour quêtes de boss secret
+        if questName == "DefeatAncientGuardian" then
+            require(game.ReplicatedStorage.BossModule).CreateSecretBoss("AncientGuardian", player.Character.HumanoidRootPart.Position + Vector3.new(10, 0, 10))
+        elseif questName == "AwakenAncientPower" then
+            require(game.ReplicatedStorage.BossModule).CreateSecretBoss("VoidSerpent", player.Character.HumanoidRootPart.Position + Vector3.new(-10, 0, -10))
+        end
     end
 end
 

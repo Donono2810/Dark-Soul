@@ -207,7 +207,8 @@ function StoryMode.TriggerRandomEvent(player)
     local events = {
         "Rencontre avec un marchand ambulant",
         "Attaque surprise d'ennemis",
-        "Découverte d'un trésor caché"
+        "Découverte d'un trésor caché",
+        "Apparition d'un boss secret"
     }
     local event = events[math.random(#events)]
     StoryMode.ShowDialogue("Événement", event)
@@ -218,6 +219,12 @@ function StoryMode.TriggerRandomEvent(player)
         -- Spawn ennemis temporaires
     elseif event == "Découverte d'un trésor caché" then
         _G.GainExp(player, 200)
+    elseif event == "Apparition d'un boss secret" then
+        local bosses = {"AncientGuardian", "ShadowDragon", "NecromancerKing", "CrystalBehemoth", "VoidSerpent"}
+        local bossName = bosses[math.random(#bosses)]
+        local position = player.Character.HumanoidRootPart.Position + Vector3.new(math.random(-20,20), 0, math.random(-20,20))
+        require(game.ReplicatedStorage.BossModule).CreateSecretBoss(bossName, position)
+        StoryMode.ShowDialogue("Narrateur", "Un boss secret apparaît : " .. bossName .. " !")
     end
 end
 
