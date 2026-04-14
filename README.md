@@ -9,6 +9,13 @@ Ce projet est un jeu Roblox ultra-méga-complet inspiré de Dark Souls avec 5 cl
 - **Rogue** (90 HP, +20 dmg, vitesse 18) : Ultra-rapide, coup fatal, items : 2x Dague, Rapier, Potions
 - **Paladin** (140 HP, +18 dmg, vitesse 11) : Équilibré, aura protectrice, items : Épée, Sorts de protection/heal
 
+## Capacités Spéciales (Touche T)
+- **Warrior** : Charge brutale (dash + dégâts AoE, 50 stamina).
+- **Mage** : Tempête de feu (dégâts AoE, 40 stamina).
+- **Archer** : Salve de flèches (5 tirs rapides, 30 stamina).
+- **Rogue** : Coup fatal (dégâts élevés sur cible proche, 60 stamina).
+- **Paladin** : Aura protectrice (heal + bouclier 10s, 70 stamina).
+
 ## Armes (10 types)
 - **Épée** (20 dmg, 1.5s) : Équilibrée
 - **Axe** (35 dmg, 2.0s) : Forte mais lente
@@ -34,12 +41,18 @@ Ce projet est un jeu Roblox ultra-méga-complet inspiré de Dark Souls avec 5 cl
 - **Ennemis** : Basic, Goblin, Orc, Skeleton avec stats différentes.
 - **Animations d'attaques** : Animations spécifiques par arme pour plus d'immersion.
 - **Tenues différentes** : Apparence du personnage change selon la classe choisie (couleurs distinctes).
+- **Stamina** : Système de stamina limitant attaques et capacités spéciales.
+- **Capacités spéciales** : Chaque classe a une capacité unique (T pour activer).
+- **Buffs/Débuffs** : Effets temporaires comme poison.
+- **Quêtes secondaires** : Missions optionnelles (tuer Gobelins, collecter loots).
+- **HUD amélioré** : Barres de santé et stamina visibles.
 
 ## Contrôles
-- Clic gauche : Attaquer.
+- Clic gauche : Attaquer (coûte 20 stamina).
 - Clic droit : Fireball.
 - Q : Bouclier (réduit dégâts 10s).
 - R : Heal (soigne 50 HP).
+- T : Capacité spéciale de classe (coûte stamina).
 - E : Potion.
 - Bouton "Inventaire" : Menu avec craft.
 - **Au démarrage** : Écran de sélection de classe (cliquez sur une classe, puis "Confirmer").
