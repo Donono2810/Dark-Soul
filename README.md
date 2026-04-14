@@ -246,7 +246,7 @@ Le jeu dispose d'un magasin où les joueurs peuvent acheter des armes, armures e
 
 - **Localisation** : Partie verte près du spawn (0,0,-50).
 - **Comment utiliser** : Touchez la partie pour ouvrir l'interface du magasin.
-- **Articles disponibles** : Épées, dagues, armures, potions, sorts, clés, bombes, familiers (loup, aigle, ours, dragon, etc.) avec prix variés.
+- **Articles disponibles** : Épées, dagues, armures, potions, sorts, clés, bombes, familiers (loup, aigle, ours, dragon, etc.), montures (cheval, dragon, griffon, etc.) avec prix variés.
 - **Devise** : Or (500 or de départ).
 
 Importez dans Roblox Studio pour jouer !

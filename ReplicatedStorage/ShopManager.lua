@@ -55,7 +55,19 @@ local shopItems = {
     ["Phoenix"] = {price = 1500, type = "Pet", description = "Phénix légendaire qui ressuscite."},
     ["ShadowCat"] = {price = 400, type = "Pet", description = "Chat de l'ombre furtif."},
     ["IceFox"] = {price = 450, type = "Pet", description = "Renard de glace qui gèle."},
-    ["ThunderBird"] = {price = 700, type = "Pet", description = "Oiseau du tonnerre électrifiant."}
+    ["ThunderBird"] = {price = 700, type = "Pet", description = "Oiseau du tonnerre électrifiant."},
+
+    -- Mounts
+    ["Horse"] = {price = 400, type = "Mount", description = "Cheval robuste pour les voyages terrestres."},
+    ["Unicorn"] = {price = 600, type = "Mount", description = "Licorne magique avec une vitesse accrue."},
+    ["WolfMount"] = {price = 500, type = "Mount", description = "Loup géant rapide et agile."},
+    ["Dragon"] = {price = 1200, type = "Mount", description = "Dragon volant pour des voyages aériens."},
+    ["Griffin"] = {price = 1000, type = "Mount", description = "Griffon ailé pour la vitesse et l'agilité."},
+    ["Elephant"] = {price = 800, type = "Mount", description = "Éléphant lent mais très résistant."},
+    ["Pegasus"] = {price = 1500, type = "Mount", description = "Pégase volant légendaire."},
+    ["Rhinoceros"] = {price = 700, type = "Mount", description = "Rhinocéros chargeur puissant."},
+    ["Camel"] = {price = 350, type = "Mount", description = "Chameau endurant pour les déserts."},
+    ["Tiger"] = {price = 650, type = "Mount", description = "Tigre rapide et féroce."}
 }
 
 -- Fonction pour obtenir la liste des items du magasin
@@ -89,6 +101,13 @@ function ShopManager.BuyItem(player, itemName)
         local success = PetModule.SummonPet(player, itemName)
         if not success then
             return false, "Impossible d'invoquer le pet."
+        end
+    elseif item.type == "Mount" then
+        -- Donner la monture
+        local MountModule = require(game.ReplicatedStorage.MountModule)
+        local success = MountModule.GiveMount(player, itemName)
+        if not success then
+            return false, "Impossible de donner la monture."
         end
     else
         -- Ajouter l'item à l'inventaire
