@@ -59,6 +59,60 @@ confirmButton.MouseButton1Click:Connect(function()
         InventoryModule.AddItem(player, item, qty)
     end
     
+    -- Changer l'apparence selon la classe
+    player.CharacterAdded:Connect(function(character)
+        local humanoid = character:FindFirstChild("Humanoid")
+        if humanoid then
+            local bodyColors = character:FindFirstChild("Body Colors")
+            if not bodyColors then
+                bodyColors = Instance.new("BodyColors")
+                bodyColors.Parent = character
+            end
+            
+            if selectedClass == "Warrior" then
+                bodyColors.HeadColor3 = Color3.fromRGB(139, 69, 19) -- Marron
+                bodyColors.TorsoColor3 = Color3.fromRGB(139, 69, 19)
+                bodyColors.LeftArmColor3 = Color3.fromRGB(139, 69, 19)
+                bodyColors.RightArmColor3 = Color3.fromRGB(139, 69, 19)
+                bodyColors.LeftLegColor3 = Color3.fromRGB(139, 69, 19)
+                bodyColors.RightLegColor3 = Color3.fromRGB(139, 69, 19)
+            elseif selectedClass == "Mage" then
+                bodyColors.HeadColor3 = Color3.fromRGB(0, 0, 255) -- Bleu
+                bodyColors.TorsoColor3 = Color3.fromRGB(0, 0, 255)
+                bodyColors.LeftArmColor3 = Color3.fromRGB(0, 0, 255)
+                bodyColors.RightArmColor3 = Color3.fromRGB(0, 0, 255)
+                bodyColors.LeftLegColor3 = Color3.fromRGB(0, 0, 255)
+                bodyColors.RightLegColor3 = Color3.fromRGB(0, 0, 255)
+            elseif selectedClass == "Archer" then
+                bodyColors.HeadColor3 = Color3.fromRGB(0, 128, 0) -- Vert
+                bodyColors.TorsoColor3 = Color3.fromRGB(0, 128, 0)
+                bodyColors.LeftArmColor3 = Color3.fromRGB(0, 128, 0)
+                bodyColors.RightArmColor3 = Color3.fromRGB(0, 128, 0)
+                bodyColors.LeftLegColor3 = Color3.fromRGB(0, 128, 0)
+                bodyColors.RightLegColor3 = Color3.fromRGB(0, 128, 0)
+            elseif selectedClass == "Rogue" then
+                bodyColors.HeadColor3 = Color3.fromRGB(128, 128, 128) -- Gris
+                bodyColors.TorsoColor3 = Color3.fromRGB(128, 128, 128)
+                bodyColors.LeftArmColor3 = Color3.fromRGB(128, 128, 128)
+                bodyColors.RightArmColor3 = Color3.fromRGB(128, 128, 128)
+                bodyColors.LeftLegColor3 = Color3.fromRGB(128, 128, 128)
+                bodyColors.RightLegColor3 = Color3.fromRGB(128, 128, 128)
+            elseif selectedClass == "Paladin" then
+                bodyColors.HeadColor3 = Color3.fromRGB(255, 215, 0) -- Or
+                bodyColors.TorsoColor3 = Color3.fromRGB(255, 215, 0)
+                bodyColors.LeftArmColor3 = Color3.fromRGB(255, 215, 0)
+                bodyColors.RightArmColor3 = Color3.fromRGB(255, 215, 0)
+                bodyColors.LeftLegColor3 = Color3.fromRGB(255, 215, 0)
+                bodyColors.RightLegColor3 = Color3.fromRGB(255, 215, 0)
+            end
+        end
+    end)
+    
+    -- Appliquer immédiatement si le personnage existe déjà
+    if player.Character then
+        player.CharacterAdded:Fire(player.Character)
+    end
+    
     print("Classe choisie : " .. selectedClass)
     screenGui:Destroy() -- Fermer la GUI
 end)

@@ -6,6 +6,7 @@ local mouse = player:GetMouse()
 local InventoryModule = require(game.ReplicatedStorage.InventoryModule)
 local WeaponModule = require(game.ReplicatedStorage.WeaponModule)
 local ClassModule = require(game.ReplicatedStorage.ClassModule)
+local AnimationModule = require(game.ReplicatedStorage.AnimationModule)
 
 local lastAttackTime = 0
 
@@ -22,8 +23,8 @@ mouse.Button1Down:Connect(function()
     if tick() - lastAttackTime > stats.speed then
         lastAttackTime = tick()
         
-        -- Animation d'attaque simple
-        humanoid:MoveTo(character.HumanoidRootPart.Position + character.HumanoidRootPart.CFrame.LookVector * 2)
+        -- Jouer l'animation d'attaque
+        AnimationModule.PlayAttackAnimation(character, weapon)
         
         -- Détection d'ennemis proches
         local enemies = workspace:GetChildren()

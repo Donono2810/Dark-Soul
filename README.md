@@ -32,6 +32,8 @@ Ce projet est un jeu Roblox ultra-méga-complet inspiré de Dark Souls avec 5 cl
 - **Sauvegarde** : Persistance niveau/exp/inventaire.
 - **Loot** : Drops aléatoires.
 - **Ennemis** : Basic, Goblin, Orc, Skeleton avec stats différentes.
+- **Animations d'attaques** : Animations spécifiques par arme pour plus d'immersion.
+- **Tenues différentes** : Apparence du personnage change selon la classe choisie (couleurs distinctes).
 
 ## Contrôles
 - Clic gauche : Attaquer.
