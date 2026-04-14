@@ -43,7 +43,19 @@ local shopItems = {
     ["CrystalShard"] = {price = 300, type = "Item", description = "Éclat de cristal pour les crafts."},
     ["PhoenixFeather"] = {price = 500, type = "Item", description = "Plume de phénix pour la résurrection."},
     ["VoidCrystal"] = {price = 700, type = "Item", description = "Cristal du vide pour les sorts avancés."},
-    ["EternalCrown"] = {price = 1500, type = "Item", description = "Couronne éternelle, artefact rare."}
+    ["EternalCrown"] = {price = 1500, type = "Item", description = "Couronne éternelle, artefact rare."},
+
+    -- Pets
+    ["Wolf"] = {price = 300, type = "Pet", description = "Loup fidèle qui attaque les ennemis."},
+    ["Raven"] = {price = 200, type = "Pet", description = "Corbeau qui éclaire les zones."},
+    ["Golem"] = {price = 500, type = "Pet", description = "Golem robuste qui absorbe les dégâts."},
+    ["Eagle"] = {price = 350, type = "Pet", description = "Aigle qui plonge sur les ennemis."},
+    ["Bear"] = {price = 600, type = "Pet", description = "Ours puissant qui intimide."},
+    ["Dragonling"] = {price = 800, type = "Pet", description = "Petit dragon crachant du feu."},
+    ["Phoenix"] = {price = 1500, type = "Pet", description = "Phénix légendaire qui ressuscite."},
+    ["ShadowCat"] = {price = 400, type = "Pet", description = "Chat de l'ombre furtif."},
+    ["IceFox"] = {price = 450, type = "Pet", description = "Renard de glace qui gèle."},
+    ["ThunderBird"] = {price = 700, type = "Pet", description = "Oiseau du tonnerre électrifiant."}
 }
 
 -- Fonction pour obtenir la liste des items du magasin
@@ -71,9 +83,18 @@ function ShopManager.BuyItem(player, itemName)
     -- Déduire l'or
     gold.Value = gold.Value - item.price
 
-    -- Ajouter l'item à l'inventaire
-    local InventoryModule = require(game.ReplicatedStorage.InventoryModule)
-    InventoryModule.AddItem(player, itemName, 1)
+    if item.type == "Pet" then
+        -- Invoquer le pet
+        local PetModule = require(game.ReplicatedStorage.PetModule)
+        local success = PetModule.SummonPet(player, itemName)
+        if not success then
+            return false, "Impossible d'invoquer le pet."
+        end
+    else
+        -- Ajouter l'item à l'inventaire
+        local InventoryModule = require(game.ReplicatedStorage.InventoryModule)
+        InventoryModule.AddItem(player, itemName, 1)
+    end
 
     -- Notification
     local notification = Instance.new("Hint")
