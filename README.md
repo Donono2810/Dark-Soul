@@ -224,6 +224,22 @@ Ce projet est un jeu Roblox ultra-méga-complet inspiré de Dark Souls avec 5 cl
 
 **Total : 26 boss dans le jeu !**
 
+## Items Cachés
+
+Le jeu contient des items cachés dans chaque zone et le donjon secret. Explorez attentivement pour les trouver et gagner des récompenses spéciales !
+
+- **Zone 1** : Pièce ancienne, herbe mystique.
+- **Zone 2** : Anneau perdu, fragment de cristal.
+- **Zone 3** : Épée enchantée, coffre au trésor.
+- **Zone 4** : Œuf de dragon, parchemin magique.
+- **Zone 5** : Armure légendaire, plume de phénix.
+- **Zone 6** : Clé de cristal, orbe de mana.
+- **Zone 7** : Gemme de lave, essence de feu.
+- **Zone 8** : Cape d'ombre, cristal du vide.
+- **Donjon Secret** : Relique éternelle.
+
+Récompenses : Or, expérience, potions, équipements rares et légendaires.
+
 Importez dans Roblox Studio pour jouer !
 
 📖 **[👉 LIRE LE GUIDE D'IMPORTATION 👈](INSTALLATION.md)**
