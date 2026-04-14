@@ -11,6 +11,7 @@ local StaminaModule = require(game.ReplicatedStorage.StaminaModule)
 local ItemModule = require(game.ReplicatedStorage.ItemModule)
 local MultiplayerModule = require(game.ReplicatedStorage.MultiplayerModule)
 local uis = game:GetService("UserInputService")
+local pvpHitEvent = game.ReplicatedStorage:WaitForChild("PvpHit")
 
 StaminaModule.Init(player)
 
@@ -79,8 +80,8 @@ mouse.Button1Down:Connect(function()
                 if distance < 5 then
                     local playerTarget = game.Players:GetPlayerFromCharacter(target)
                     if playerTarget then
-                        if MultiplayerModule.IsPvP() and target ~= character then
-                            target.Humanoid:TakeDamage(finalDamage)
+                        if MultiplayerModule.IsPvP() and playerTarget ~= player then
+                            pvpHitEvent:FireServer(playerTarget.UserId, finalDamage)
                         end
                     else
                         target.Humanoid:TakeDamage(finalDamage)

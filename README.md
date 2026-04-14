@@ -118,6 +118,7 @@ Ce projet est un jeu Roblox ultra-méga-complet inspiré de Dark Souls avec 5 cl
 - **Quêtes secondaires** : Missions optionnelles (tuer Gobelins, collecter loots).
 - **Parry** : Système de parade (U) pour réduire les dégâts entrants.
 - **Mode multijoueur** : Choix entre Solo, Coop et PvP via l'interface.
+- **Classement PvP** : Top kills affiché en jeu avec un tableau de score.
 
 ## Contrôles
 - Clic gauche : Attaquer (coûte 20 stamina).
