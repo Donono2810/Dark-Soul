@@ -28,7 +28,7 @@ local storyChapters = {
             camera.CameraType = Enum.CameraType.Custom
         end,
         objectives = {"Tuer 5 ennemis", "Explorer Zone 1"},
-        sideQuests = {"Collecter 3 potions", "Parler à l'ancien"},
+        sideQuests = {"CollectHerbs", "SaveVillager", "RecruitAllies"},
         reward = {exp = 200, item = "Sword"}
     },
     [2] = {
@@ -40,7 +40,7 @@ local storyChapters = {
             wait(2)
         end,
         objectives = {"Tuer le Boss Zone 1"},
-        sideQuests = {"Sauver un villageois", "Trouver un artefact ancien"},
+        sideQuests = {"SolveRiddle", "FindHiddenTreasure", "CraftLegendaryWeapon"},
         reward = {exp = 500, item = "Greatsword"}
     },
     [3] = {
@@ -55,7 +55,7 @@ local storyChapters = {
             wait(3)
         end,
         objectives = {"Explorer Zone 2", "Tuer 10 ennemis"},
-        sideQuests = {"Résoudre une énigme", "Aider un marchand"},
+        sideQuests = {"CollectCrystals", "ExploreZone2", "DefeatAncientGuardian"},
         reward = {exp = 800, item = "IceSpell"}
     },
     [4] = {
@@ -68,7 +68,7 @@ local storyChapters = {
             end)
         end,
         objectives = {"Rejoindre une faction", "Compléter une quête de faction"},
-        sideQuests = {"Recruter des alliés", "Construire une base"},
+        sideQuests = {"JoinFaction", "UniteFactions", "NegotiatePeace"},
         reward = {exp = 1000, item = "AmuletOfStrength"}
     },
     [5] = {
@@ -80,7 +80,7 @@ local storyChapters = {
             wait(2)
         end,
         objectives = {"Tuer 20 Goblins", "Détruire leur camp"},
-        sideQuests = {"Sauver des prisonniers", "Voler leur trésor"},
+        sideQuests = {"KillGoblins", "CollectOres", "TrainApprentice"},
         reward = {exp = 1200, item = "Hammer"}
     },
     [6] = {
@@ -93,7 +93,7 @@ local storyChapters = {
             camera.CameraType = Enum.CameraType.Custom
         end,
         objectives = {"Tuer le Chef Orc", "Explorer les cavernes"},
-        sideQuests = {"Apprendre une langue ancienne", "Forger une arme légendaire"},
+        sideQuests = {"KillOrcs", "CollectBones", "TamePet"},
         reward = {exp = 1500, item = "Katana"}
     },
     [7] = {
@@ -105,7 +105,7 @@ local storyChapters = {
             wait(3)
         end,
         objectives = {"Tuer 30 Squelettes", "Détruire le tombeau"},
-        sideQuests = {"Purifier les terres", "Collecter des os sacrés"},
+        sideQuests = {"KillSkeletons", "PurifyLand", "AwakenAncientPower"},
         reward = {exp = 1800, item = "Scythe"}
     },
     [8] = {
@@ -120,7 +120,7 @@ local storyChapters = {
             wait(3)
         end,
         objectives = {"Tuer le Dragon", "Récupérer l'œuf"},
-        sideQuests = {"Allier avec un pet dragon", "Explorer la montagne"},
+        sideQuests = {"CollectArtifacts", "BuildFortress", "CompleteDailyChallenge"},
         reward = {exp = 2500, item = "PhoenixPotion"}
     },
     [9] = {
@@ -135,7 +135,7 @@ local storyChapters = {
             end)
         end,
         objectives = {"Gagner 1000 points de guilde", "Vaincre une guilde rivale"},
-        sideQuests = {"Recruter 5 membres", "Construire un château"},
+        sideQuests = {"CreateGuild", "WinGuildBattle", "SurviveWaves"},
         reward = {exp = 3000, item = "DivineShield"}
     },
     [10] = {
@@ -150,7 +150,7 @@ local storyChapters = {
             wait(4)
         end,
         objectives = {"Tuer le Boss Final", "Sauver le monde"},
-        sideQuests = {"Rassembler toutes les factions", "Utiliser tous les items légendaires"},
+        sideQuests = {"KillBosses", "CollectArtifacts", "AwakenAncientPower"},
         reward = {exp = 5000, item = "EnchantedSword"}
     }
 }

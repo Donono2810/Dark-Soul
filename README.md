@@ -104,7 +104,7 @@ Ce projet est un jeu Roblox ultra-méga-complet inspiré de Dark Souls avec 5 cl
 - **Niveaux & Exp** : Gagner exp en tuant, level up, perte à la mort.
 - **Équipement** : Armures (casque, plastron, jambières, bouclier) avec défense, craftables.
 - **Craft** : 7 armes + 8 armures (Leather/Iron sets) + accessoires.
-- **Quêtes** : Différentes par zone avec récompenses.
+- **Système de Quêtes** : Plus de 25 quêtes secondaires (combat, collecte, exploration, sociales, narratives) avec récompenses variées.
 - **Zones** : 5 niveaux avec monstres variés, **multiples boss par zone**.
 - **Sauvegarde** : Persistance niveau/exp/inventaire.
 - **Boss** : Phases avec compétences (poison, AoE stun, summon).
