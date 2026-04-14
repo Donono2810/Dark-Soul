@@ -8,6 +8,8 @@ local WeaponModule = require(game.ReplicatedStorage.WeaponModule)
 local ClassModule = require(game.ReplicatedStorage.ClassModule)
 local AnimationModule = require(game.ReplicatedStorage.AnimationModule)
 local StaminaModule = require(game.ReplicatedStorage.StaminaModule)
+local ItemModule = require(game.ReplicatedStorage.ItemModule)
+local uis = game:GetService("UserInputService")
 
 StaminaModule.Init(player)
 
@@ -43,12 +45,24 @@ mouse.Button1Down:Connect(function()
     local weapon = equip.weapon or "Sword" -- Arme par défaut
     local stats = WeaponModule.GetWeaponStats(weapon)
     
+    -- Stats avancées des items
+    local itemStats = ItemModule.GetItemStats(weapon)
+    local baseDamage = stats.damage + (itemStats.damage or 0)
+    local critChance = itemStats.crit or 0
+    local lifesteal = itemStats.lifesteal or 0
+    
     -- Bonus de classe pour les dégâts
     local className = ClassModule.GetPlayerClass(player)
     local classStats = ClassModule.GetClassStats(className)
     local multiplier = _G.nextAttackMultiplier or 1
     _G.nextAttackMultiplier = 1 -- Reset
-    local baseDamage = (stats.damage + classStats.damageBonus) * multiplier
+    local finalDamage = (baseDamage + classStats.damageBonus) * multiplier
+    
+    -- Coup critique
+    if math.random(1, 100) <= critChance then
+        finalDamage = finalDamage * 1.5 -- 50% bonus crit
+        -- Afficher "CRIT!" (optionnel)
+    end
     
     if tick() - lastAttackTime > stats.speed then
         lastAttackTime = tick()
@@ -60,7 +74,12 @@ mouse.Button1Down:Connect(function()
         local enemies = workspace:GetChildren()
         for _, enemy in pairs(enemies) do
             if enemy:IsA("Model") and enemy:FindFirstChild("Humanoid") and (enemy.HumanoidRootPart.Position - character.HumanoidRootPart.Position).Magnitude < 5 then
-                enemy.Humanoid:TakeDamage(baseDamage)
+                enemy.Humanoid:TakeDamage(finalDamage)
+                
+                -- Lifesteal
+                if lifesteal > 0 then
+                    humanoid.Health = math.min(humanoid.Health + (finalDamage * lifesteal / 100), humanoid.MaxHealth)
+                end
             end
         end
     end

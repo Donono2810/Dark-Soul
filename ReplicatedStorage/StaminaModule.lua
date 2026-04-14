@@ -36,4 +36,10 @@ function StaminaModule.Update(player)
     end
 end
 
+function StaminaModule.RestoreStamina(player, amount)
+    local data = playerStamina[player]
+    if not data then return end
+    data.current = math.min(data.max, data.current + amount)
+end
+
 return StaminaModule

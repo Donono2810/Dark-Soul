@@ -14,15 +14,24 @@ end
 function InventoryModule.UseItem(player, itemName)
     if playerInventories[player.UserId] and playerInventories[player.UserId][itemName] and playerInventories[player.UserId][itemName] > 0 then
         playerInventories[player.UserId][itemName] = playerInventories[player.UserId][itemName] - 1
+        
+        local ItemModule = require(game.ReplicatedStorage.ItemModule)
+        local itemStats = ItemModule.GetItemStats(itemName)
+        
         -- Effets
-        if itemName == "Potion" then
+        if itemStats.type == "consumable" then
             local char = player.Character
             if char and char:FindFirstChild("Humanoid") then
-                char.Humanoid.Health = math.min(char.Humanoid.Health + 30, char.Humanoid.MaxHealth)
+                if itemStats.healing then
+                    char.Humanoid.Health = math.min(char.Humanoid.Health + itemStats.healing, char.Humanoid.MaxHealth)
+                end
+                if itemStats.mana_restore then
+                    -- Placeholder pour mana (à implémenter avec système de mana)
+                end
+                if itemStats.stamina_restore then
+                    require(game.ReplicatedStorage.StaminaModule).RestoreStamina(player, itemStats.stamina_restore)
+                end
             end
-        elseif itemName == "Fireball" then
-            -- Utilisé dans le script de magie
-            return "spell"
         end
         return true
     end

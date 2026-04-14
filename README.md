@@ -26,24 +26,84 @@ Ce projet est un jeu Roblox ultra-méga-complet inspiré de Dark Souls avec 5 cl
 - **Rogue** : Coup fatal (dégâts élevés sur cible proche, 60 stamina).
 - **Paladin** : Aura protectrice (heal + bouclier 10s, 70 stamina).
 
-## Armes (10 types)
-- **Épée** (20 dmg, 1.5s) : Équilibrée
-- **Axe** (35 dmg, 2.0s) : Forte mais lente
-- **Dagger** (15 dmg, 1.0s) : Rapide mais faible
-- **Greatsword** (50 dmg, 2.5s) : Très puissante
-- **Bow** (25 dmg, 1.2s) : À distance
-- **Katana** (45 dmg, 1.3s) : Rapide et forte
-- **Hammer** (60 dmg, 3.0s) : Très puissante mais très lente
-- **Spear** (30 dmg, 1.4s) : Équilibrée avec allonge
-- **Scythe** (55 dmg, 2.3s) : Spéciale, puissante
-- **Rapier** (18 dmg, 0.8s) : Ultra-rapide
+## Armes (10 types avec stats avancées)
+- **Épée** (20 dmg, 1.5s, 5% crit) : Équilibrée
+- **Hache** (35 dmg, 2.0s, 10% crit) : Puissante mais lente
+- **Dague** (15 dmg, 1.0s, 15% crit) : Rapide et légère
+- **Greatsword** (50 dmg, 2.5s, 8% crit) : Très puissante
+- **Arc** (25 dmg, 1.2s, 12% crit) : À distance
+- **Katana** (45 dmg, 1.3s, 20% crit) : Rapide et forte avec crit élevé
+- **Hammer** (60 dmg, 3.0s, 5% crit, stun 10%) : Peut stunner
+- **Spear** (30 dmg, 1.4s, 8% crit) : Allongée et équilibrée
+- **Scythe** (55 dmg, 2.3s, 18% crit, 10% lifesteal) : Régénère de la vie
+- **Rapier** (18 dmg, 0.8s, 25% crit) : Ultra-rapide avec crit très élevé
+
+## Armures (3 sets - Leather, Iron, Gold)
+### Leather Set (faible défense, léger)
+- Helmet (5 déf, +2 esquive)
+- Chest (10 déf)
+- Legs (8 déf, +1 vitesse)
+- Shield (15 déf, +20% block)
+
+### Iron Set (défense moyenne, lourd)
+- Helmet (10 déf)
+- Chest (20 déf)
+- Legs (15 déf, -1 vitesse)
+- Shield (25 déf, +35% block)
+
+### Gold Set (haute défense, magique)
+- Helmet (15 déf, +3 esquive, +5 mana_regen)
+- Chest (28 déf, +2 health_regen)
+- Legs (20 déf, +2 vitesse)
+- Shield (35 déf, +50% block, +10% reflection)
+
+## Potions & Consommables
+- **Potion** (30 healing) : Basique
+- **GreatPotion** (60 healing) : Avancée
+- **MegaPotion** (100 healing) : Puissante
+- **EtherPotion** (50 mana) : Restaure mana
+- **StaminaPotion** (50 stamina) : Restaure stamina
+- **AntidotePotion** : Élimine poison
+
+## Sorts
+- **Fireball** (40 dmg, 30 mana) : Basique
+- **IceSpell** (35 dmg, 25 mana, stun 5%) : Gèle l'ennemi
+- **LightningBolt** (50 dmg, 35 mana, 20% crit) : Éclair puissant
+- **HealSpell** (40 healing, 30 mana) : Soin magique
+- **ShieldSpell** (+20 déf, 25 mana, 10s) : Bouclier magique
+
+## Matériaux & Accessoires
+### Matériaux (pour craft)
+- Iron Ore (commun)
+- Silver Ore (peu rare)
+- Gold Ore (rare)
+- Crystal Shard (légendaire)
+- Dragon Scale (épique)
+
+### Accessoires (stat bonuses)
+- Amulet of Strength (+15 dmg)
+- Ring of Speed (+3 vitesse)
+- Amulet of Protection (+10 déf)
+- Ring of Mana (+50 mana, +5 mana_regen)
+
+## Systèmes de Stats
+- **Dégâts (Damage)** : Augmenté par les armes, les classes et les accessoires.
+- **Critique (Crit)** : Probabilité de coup critique infliger 1.5x dégâts (Katana : 20%, Rapier : 25%).
+- **Lifesteal** : % de dégâts regagnés en tant que santé (Scythe : 10%).
+- **Défense (Defense)** : Réduit les dégâts entrants basé sur l'armure équipée.
+- **Block** : Probabilité de bloquer une partie des dégâts avec un bouclier.
+- **Vitesse (Speed)** : Bonus de vitesse de déplacement (Archer passive +2, Gold legs +2).
+- **Esquive (Dodge)** : Réduction aléatoire de dégâts (Leather helm +2, Gold helm +3).
+- **Parry (U)** : Reduce incoming damage by 50% for 1 second.
+- **Reflection** : % de dégâts renvoyés à l'attaquant (Gold Shield : 10%).
+- **Regen** : Régénération passive de santé ou mana (Warrior passive +5 HP/s, Gold chest +2 HP/s).
 
 ## Fonctionnalités
 - **Combat** : Au corps à corps (clic gauche) et magie (clic droit, Q bouclier, R heal).
 - **Santé & Régénération** : Lente, comme Dark Souls.
 - **Niveaux & Exp** : Gagner exp en tuant, level up, perte à la mort.
 - **Équipement** : Armures (casque, plastron, jambières, bouclier) avec défense, craftables.
-- **Craft** : 7 armes + 8 armures (Leather/Iron sets).
+- **Craft** : 7 armes + 8 armures (Leather/Iron sets) + accessoires.
 - **Quêtes** : Différentes par zone avec récompenses.
 - **Zones** : 5 niveaux avec monstres variés, **multiples boss par zone**.
 - **Sauvegarde** : Persistance niveau/exp/inventaire.
