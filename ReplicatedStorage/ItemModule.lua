@@ -53,6 +53,7 @@ local items = {
     ["SilverOre"] = {type = "material", rarity = "uncommon", description = "Minerai d'argent"},
     ["CrystalShard"] = {type = "material", rarity = "legendary", description = "Fragment de cristal magique"},
     ["DragonScale"] = {type = "material", rarity = "epic", description = "Écaille de dragon"},
+    ["VoidEssence"] = {type = "material", rarity = "legendary", description = "Essence du vide mystique"},
     
     -- Accessoires
     ["AmuletOfStrength"] = {type = "accessory", damage_bonus = 15, description = "Amulette renforçant l'attaque"},
