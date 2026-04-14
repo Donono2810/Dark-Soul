@@ -159,6 +159,7 @@ Ce projet est un jeu Roblox ultra-méga-complet inspiré de Dark Souls avec 5 cl
 - **Sauvegarde Automatique** : Points de contrôle fréquents pour éviter perte de progrès.
 - **Interface Utilisateur Améliorée** : Menus plus intuitifs avec tooltips détaillés.
 - **Support Multilingue** : Traductions pour atteindre un public plus large.
+- **Scripts Côté Client et Serveur** : PlayerInputHandler.lua (gestion des entrées joueur), GameLogicManager.lua (logique serveur et sauvegarde), UIManager.lua (interface utilisateur).
 
 ## Contrôles
 - Clic gauche : Attaquer (coûte 20 stamina).
