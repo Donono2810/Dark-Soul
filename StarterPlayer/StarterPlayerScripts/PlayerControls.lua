@@ -12,6 +12,29 @@ local StaminaModule = require(game.ReplicatedStorage.StaminaModule)
 StaminaModule.Init(player)
 
 local lastAttackTime = 0
+local parryActive = false
+local parryEndTime = 0
+
+-- Parry (touche U)
+uis.InputBegan:Connect(function(input, gameProcessed)
+    if gameProcessed then return end
+    if input.KeyCode == Enum.KeyCode.U then
+        parryActive = true
+        parryEndTime = tick() + 1 -- Parry pendant 1s
+        wait(1)
+        parryActive = false
+    end
+end)
+
+-- Appliquer parry dans HealthChanged
+character.Humanoid.HealthChanged:Connect(function(oldHealth, newHealth)
+    if newHealth < oldHealth and parryActive then
+        local damage = oldHealth - newHealth
+        local reducedDamage = damage * 0.5 -- 50% réduction
+        character.Humanoid.Health = character.Humanoid.Health + (damage - reducedDamage)
+        parryActive = false -- Parry consommé
+    end
+end)
 
 mouse.Button1Down:Connect(function()
     if not StaminaModule.UseStamina(player, 20) then return end -- Coût d'attaque

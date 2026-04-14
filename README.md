@@ -42,8 +42,8 @@ Ce projet est un jeu Roblox ultra-méga-complet inspiré de Dark Souls avec 5 cl
 - **Combat** : Au corps à corps (clic gauche) et magie (clic droit, Q bouclier, R heal).
 - **Santé & Régénération** : Lente, comme Dark Souls.
 - **Niveaux & Exp** : Gagner exp en tuant, level up, perte à la mort.
-- **Inventaire** : Potions, sorts, armes variées.
-- **Craft** : 7 recettes (Greatsword, Shield, Katana, Hammer, Spear, Scythe, Rapier).
+- **Équipement** : Armures (casque, plastron, jambières, bouclier) avec défense, craftables.
+- **Craft** : 7 armes + 8 armures (Leather/Iron sets).
 - **Quêtes** : Différentes par zone avec récompenses.
 - **Zones** : 5 niveaux avec monstres variés, **multiples boss par zone**.
 - **Sauvegarde** : Persistance niveau/exp/inventaire.
@@ -56,7 +56,7 @@ Ce projet est un jeu Roblox ultra-méga-complet inspiré de Dark Souls avec 5 cl
 - **Compétences** : Passives (toujours actives) et actives (Y) pour chaque classe.
 - **Buffs/Débuffs** : Effets temporaires comme poison.
 - **Quêtes secondaires** : Missions optionnelles (tuer Gobelins, collecter loots).
-- **HUD amélioré** : Barres de santé et stamina visibles.
+- **Parry** : Système de parade (U) pour réduire les dégâts entrants.
 
 ## Contrôles
 - Clic gauche : Attaquer (coûte 20 stamina).
@@ -65,6 +65,7 @@ Ce projet est un jeu Roblox ultra-méga-complet inspiré de Dark Souls avec 5 cl
 - R : Heal (soigne 50 HP).
 - T : Capacité spéciale de classe (coûte stamina).
 - Y : Compétence active de classe (coûte stamina/mana).
+- U : Parry (réduit dégâts de 50% pendant 1s).
 - E : Potion.
 - Bouton "Inventaire" : Menu avec craft.
 - **Au démarrage** : Écran de sélection de classe (cliquez sur une classe, puis "Confirmer").

@@ -54,6 +54,13 @@ Players.PlayerAdded:Connect(function(player)
                 local reducedDamage = damage * 0.9
                 humanoid.Health = humanoid.Health + (damage - reducedDamage)
             end
+            -- Défense d'armure
+            if newHealth < oldHealth then
+                local damage = oldHealth - newHealth
+                local defense = require(game.ReplicatedStorage.InventoryModule).GetTotalDefense(player)
+                local reducedDamage = damage * (1 - defense / 100) -- Réduction en %
+                humanoid.Health = humanoid.Health + (damage - reducedDamage)
+            end
         end)
         
         humanoid.Died:Connect(function()

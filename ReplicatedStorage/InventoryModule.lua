@@ -29,17 +29,44 @@ function InventoryModule.UseItem(player, itemName)
     return false
 end
 
-function InventoryModule.EquipItem(player, itemName)
+local playerEquipment = {} -- Équipement actuel (arme, armure: helmet, chest, legs, shield)
+
+function InventoryModule.EquipItem(player, itemName, slot)
     if playerInventories[player.UserId] and playerInventories[player.UserId][itemName] then
         playerEquipment[player.UserId] = playerEquipment[player.UserId] or {}
-        playerEquipment[player.UserId].weapon = itemName
+        if slot then
+            playerEquipment[player.UserId][slot] = itemName
+        else
+            playerEquipment[player.UserId].weapon = itemName
+        end
         return true
     end
     return false
 end
 
-function InventoryModule.GetInventory(player)
-    return playerInventories[player.UserId] or {}
+function InventoryModule.GetEquipment(player)
+    return playerEquipment[player.UserId] or {}
+end
+
+function InventoryModule.GetTotalDefense(player)
+    local equip = playerEquipment[player.UserId] or {}
+    local defense = 0
+    local armorStats = {
+        ["LeatherHelmet"] = 5,
+        ["LeatherChest"] = 10,
+        ["LeatherLegs"] = 8,
+        ["WoodenShield"] = 15,
+        ["IronHelmet"] = 10,
+        ["IronChest"] = 20,
+        ["IronLegs"] = 15,
+        ["IronShield"] = 25
+    }
+    for slot, item in pairs(equip) do
+        if slot ~= "weapon" and armorStats[item] then
+            defense = defense + armorStats[item]
+        end
+    end
+    return defense
 end
 
 function InventoryModule.GetEquipment(player)

@@ -8,7 +8,16 @@ local recipes = {
     ["Hammer"] = {["Axe"] = 2, ["Greatsword"] = 1}, -- Nouvelle arme
     ["Spear"] = {["Dagger"] = 1, ["Sword"] = 1}, -- Nouvelle arme
     ["Scythe"] = {["Dagger"] = 3, ["Potion"] = 1}, -- Nouvelle arme
-    ["Rapier"] = {["Dagger"] = 1} -- Nouvelle arme facile
+    ["Rapier"] = {["Dagger"] = 1}, -- Nouvelle arme facile
+    -- Armures
+    ["LeatherHelmet"] = {["Potion"] = 1},
+    ["LeatherChest"] = {["Potion"] = 2},
+    ["LeatherLegs"] = {["Potion"] = 1},
+    ["WoodenShield"] = {["Potion"] = 1, ["Dagger"] = 1},
+    ["IronHelmet"] = {["LeatherHelmet"] = 1, ["Sword"] = 1},
+    ["IronChest"] = {["LeatherChest"] = 1, ["Axe"] = 1},
+    ["IronLegs"] = {["LeatherLegs"] = 1, ["Dagger"] = 1},
+    ["IronShield"] = {["WoodenShield"] = 1, ["Axe"] = 1}
 }
 
 function CraftModule.CraftItem(player, itemName)
