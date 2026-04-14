@@ -40,6 +40,10 @@ local bossDrops = {
     ["ShadowWarden"] = {
         items = {"ShadowBlade", "EtherealArmor", "VoidEssence"},
         chances = {0.2, 0.15, 0.4}
+    },
+    ["EternalOverlord"] = {
+        items = {"EternalCrown", "VoidEssence", "PhoenixPotion"},
+        chances = {0.1, 0.9, 0.5}
     }
 }
 
@@ -47,45 +51,8 @@ local bossTypes = {
     ["Boss"] = {baseHealth = 500, baseDamage = 50, walkSpeed = 15, expReward = 200, ability = "Default"},
     ["CrystalColossus"] = {baseHealth = 900, baseDamage = 70, walkSpeed = 12, expReward = 800, ability = "CrystalShards"},
     ["MagmaTitan"] = {baseHealth = 1200, baseDamage = 90, walkSpeed = 16, expReward = 1000, ability = "FireBreath"},
-    ["ShadowWarden"] = {baseHealth = 1400, baseDamage = 95, walkSpeed = 14, expReward = 1100, ability = "PhaseStrike"}
-}
-
-local secretBosses = {
-    ["AncientGuardian"] = {
-        health = 1000,
-        damage = 50,
-        expReward = 1000,
-        ability = "SummonMinions",
-        description = "Gardien ancien des profondeurs, invoque des minions pour aider au combat."
-    },
-    ["ShadowDragon"] = {
-        health = 1500,
-        damage = 80,
-        expReward = 1500,
-        ability = "FireBreath",
-        description = "Dragon des ombres, crache du feu et se téléporte."
-    },
-    ["NecromancerKing"] = {
-        health = 1200,
-        damage = 60,
-        expReward = 1200,
-        ability = "RaiseDead",
-        description = "Roi nécromancien, ressuscite les ennemis morts."
-    },
-    ["CrystalBehemoth"] = {
-        health = 2000,
-        damage = 100,
-        expReward = 2000,
-        ability = "CrystalShards",
-        description = "Béhémoth de cristal, lance des éclats et se régénère."
-    },
-    ["VoidSerpent"] = {
-        health = 800,
-        damage = 40,
-        expReward = 800,
-        ability = "VoidPull",
-        description = "Serpent du vide, attire les joueurs et inflige des dégâts de zone."
-    }
+    ["ShadowWarden"] = {baseHealth = 1400, baseDamage = 95, walkSpeed = 14, expReward = 1100, ability = "PhaseStrike"},
+    ["EternalOverlord"] = {baseHealth = 2000, baseDamage = 120, walkSpeed = 18, expReward = 1500, ability = "VoidStorm"}
 }
 
 local function giveLoot(player, bossName)

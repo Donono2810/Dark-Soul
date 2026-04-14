@@ -52,7 +52,8 @@ local questData = {
     ["TrainApprentice"] = {required = 1, reward = {["Fireball"] = 10}, description = "Former un apprenti magicien"},
     ["BuildFortress"] = {required = 1, reward = {["GoldShield"] = 1}, description = "Construire une forteresse"},
     ["NegotiatePeace"] = {required = 2, reward = {["EtherPotion"] = 10}, description = "Négocier la paix entre 2 groupes"},
-    ["AwakenAncientPower"] = {required = 1, reward = {["LightningRapier"] = 1}, description = "Éveiller un pouvoir ancien"}
+    ["AwakenAncientPower"] = {required = 1, reward = {["LightningRapier"] = 1}, description = "Éveiller un pouvoir ancien"},
+    ["DefeatEternalOverlord"] = {required = 1, reward = {["EternalCrown"] = 1}, description = "Vaincre l'Overlord Éternel dans le donjon secret"}
 }
 
 function QuestModule.StartQuest(player, questName)

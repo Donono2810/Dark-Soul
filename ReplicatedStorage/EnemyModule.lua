@@ -11,7 +11,8 @@ local enemyTypes = {
     ["Skeleton"] = {health = 120, damage = 25, speed = 12, exp = 25, loot = {['Bow'] = 0.2}, ability = "Summon (30% chance, invoque un Basic)"}, -- Magique
     ["CrystalGolem"] = {health = 250, damage = 45, speed = 6, exp = 40, loot = {['CrystalShard'] = 0.5, ['FrostHammer'] = 0.1}, ability = "Bouclier (réduit 20% des dégâts)"},
     ["LavaSpirit"] = {health = 180, damage = 50, speed = 14, exp = 45, loot = {['MagmaCore'] = 0.4, ['Fireball'] = 0.2}, ability = "Brûlure (10 dmg/s pendant 5s)"},
-    ["PhantomKnight"] = {health = 220, damage = 55, speed = 12, exp = 60, loot = {['ShadowBlade'] = 0.25, ['EtherealArmor'] = 0.1}, ability = "Phase (ignore les dégâts 1s toutes les 5s)"}
+    ["PhantomKnight"] = {health = 220, damage = 55, speed = 12, exp = 60, loot = {['ShadowBlade'] = 0.25, ['EtherealArmor'] = 0.1}, ability = "Phase (ignore les dégâts 1s toutes les 5s)"},
+    ["VoidBeast"] = {health = 300, damage = 70, speed = 10, exp = 80, loot = {['VoidEssence'] = 0.6, ['EternalCrown'] = 0.05}, ability = "VoidPull (attire les joueurs)"}
 }
 
 function EnemyModule.CreateEnemy(position, enemyType, questUpdate)

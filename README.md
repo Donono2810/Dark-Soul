@@ -220,7 +220,9 @@ Ce projet est un jeu Roblox ultra-méga-complet inspiré de Dark Souls avec 5 cl
 - **Zone 8** : Téléporteur (750,0,0), 5 Phantom Knights + **1 boss de l'ombre**.
 - **Donjon** : Porte grise (200,0,0), pièges, 4 ennemis variés + **3 boss dungeon**.
 
-**Total : 25 boss dans le jeu !**
+- **Donjon Secret** : Téléporteur caché dans Zone 8 (800,0,0), 5 Void Beasts + **1 boss éternel**.
+
+**Total : 26 boss dans le jeu !**
 
 Importez dans Roblox Studio pour jouer !
 
