@@ -285,6 +285,13 @@ Rejoignez des factions pour des buffs et alliances.
 - **Rejoindre** : Partie jaune près du spawn pour rejoindre les Chevaliers (exemple).
 - **Buffs** : Bonus de défense, mana, vitesse, etc.
 
+## PvP & Mini-Jeux
+
+- **Arène PvP** : Partie orange près du spawn pour combats joueur contre joueur.
+- **Défis Quotidiens** : Partie violette pour quêtes rotatives journalières.
+- **Succès** : Partie bleue pour voir les achievements disponibles.
+- **Course de Montures** : Partie rouge pour mini-jeu de course avec récompenses.
+
 Importez dans Roblox Studio pour jouer !
 
 ---

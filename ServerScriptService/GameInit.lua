@@ -255,6 +255,154 @@ factionPart.Touched:Connect(function(hit)
     end
 end)
 
+-- Arène PvP
+local pvpPart = Instance.new("Part")
+pvpPart.Size = Vector3.new(3, 2, 3)
+pvpPart.Position = Vector3.new(60, 0, 0) -- Près du spawn
+pvpPart.Anchored = true
+pvpPart.BrickColor = BrickColor.new("Bright orange")
+pvpPart.Name = "PvPArena"
+pvpPart.Parent = workspace
+
+-- Étiquette
+local pvpLabel = Instance.new("SurfaceGui")
+pvpLabel.Face = Enum.NormalId.Top
+pvpLabel.Parent = pvpPart
+
+local textLabel = Instance.new("TextLabel")
+textLabel.Size = UDim2.new(1, 0, 1, 0)
+textLabel.Text = "Arène PvP\nTouchez pour entrer"
+textLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+textLabel.BackgroundTransparency = 1
+textLabel.TextScaled = true
+textLabel.Parent = pvpLabel
+
+pvpPart.Touched:Connect(function(hit)
+    local player = game.Players:GetPlayerFromCharacter(hit.Parent)
+    if player then
+        local PvPArena = require(game.ReplicatedStorage.PvPArena)
+        local success, message = PvPArena.EnterArena(player)
+        local notification = Instance.new("Hint")
+        notification.Text = message
+        notification.Parent = player.PlayerGui
+        wait(3)
+        notification:Destroy()
+    end
+end)
+
+-- Défis Quotidiens
+local dailyPart = Instance.new("Part")
+dailyPart.Size = Vector3.new(3, 2, 3)
+dailyPart.Position = Vector3.new(80, 0, 0) -- Près du spawn
+dailyPart.Anchored = true
+dailyPart.BrickColor = BrickColor.new("Bright purple")
+dailyPart.Name = "DailyChallenges"
+dailyPart.Parent = workspace
+
+-- Étiquette
+local dailyLabel = Instance.new("SurfaceGui")
+dailyLabel.Face = Enum.NormalId.Top
+dailyLabel.Parent = dailyPart
+
+local textLabel = Instance.new("TextLabel")
+textLabel.Size = UDim2.new(1, 0, 1, 0)
+textLabel.Text = "Défis Quotidiens\nTouchez pour un défi"
+textLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+textLabel.BackgroundTransparency = 1
+textLabel.TextScaled = true
+textLabel.Parent = dailyLabel
+
+dailyPart.Touched:Connect(function(hit)
+    local player = game.Players:GetPlayerFromCharacter(hit.Parent)
+    if player then
+        local RotatingDailyChallengesModule = require(game.ReplicatedStorage.RotatingDailyChallengesModule)
+        local challenge = RotatingDailyChallengesModule.GenerateChallenge()
+        local QuestModule = require(game.ReplicatedStorage.QuestModule)
+        QuestModule.StartQuest(player, challenge)
+
+        local notification = Instance.new("Hint")
+        notification.Text = "Défi quotidien : " .. challenge
+        notification.Parent = player.PlayerGui
+        wait(3)
+        notification:Destroy()
+    end
+end)
+
+-- Succès
+local achievementPart = Instance.new("Part")
+achievementPart.Size = Vector3.new(3, 2, 3)
+achievementPart.Position = Vector3.new(100, 0, 0) -- Près du spawn
+achievementPart.Anchored = true
+achievementPart.BrickColor = BrickColor.new("Bright blue")
+achievementPart.Name = "Achievements"
+achievementPart.Parent = workspace
+
+-- Étiquette
+local achievementLabel = Instance.new("SurfaceGui")
+achievementLabel.Face = Enum.NormalId.Top
+achievementLabel.Parent = achievementPart
+
+local textLabel = Instance.new("TextLabel")
+textLabel.Size = UDim2.new(1, 0, 1, 0)
+textLabel.Text = "Tableau des Succès\nTouchez pour voir"
+textLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+textLabel.BackgroundTransparency = 1
+textLabel.TextScaled = true
+textLabel.Parent = achievementLabel
+
+achievementPart.Touched:Connect(function(hit)
+    local player = game.Players:GetPlayerFromCharacter(hit.Parent)
+    if player then
+        local AchievementModule = require(game.ReplicatedStorage.AchievementModule)
+        local achievements = AchievementModule.GetAchievements()
+        local message = "Succès disponibles :\n"
+        for name, data in pairs(achievements) do
+            message = message .. name .. ": " .. data.description .. "\n"
+        end
+
+        local notification = Instance.new("Hint")
+        notification.Text = message
+        notification.Parent = player.PlayerGui
+        wait(10)
+        notification:Destroy()
+    end
+end)
+
+-- Course de Montures
+local racePart = Instance.new("Part")
+racePart.Size = Vector3.new(3, 2, 3)
+racePart.Position = Vector3.new(120, 0, 0) -- Près du spawn
+racePart.Anchored = true
+racePart.BrickColor = BrickColor.new("Bright red")
+racePart.Name = "MountRace"
+racePart.Parent = workspace
+
+-- Étiquette
+local raceLabel = Instance.new("SurfaceGui")
+raceLabel.Face = Enum.NormalId.Top
+raceLabel.Parent = racePart
+
+local textLabel = Instance.new("TextLabel")
+textLabel.Size = UDim2.new(1, 0, 1, 0)
+textLabel.Text = "Course de Montures\nTouchez pour commencer"
+textLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+textLabel.BackgroundTransparency = 1
+textLabel.TextScaled = true
+textLabel.Parent = raceLabel
+
+racePart.Touched:Connect(function(hit)
+    local player = game.Players:GetPlayerFromCharacter(hit.Parent)
+    if player then
+        local MountRace = require(game.ReplicatedStorage.MountRace)
+        local success, message = MountRace.StartRace(player)
+        local notification = Instance.new("Hint")
+        notification.Text = message
+        notification.Parent = player.PlayerGui
+        wait(3)
+        notification:Destroy()
+    end
+end)
+
 -- Donner items de départ aux joueurs
 game.Players.PlayerAdded:Connect(function(player)
     SaveModule.LoadData(player) -- Charger sauvegarde
