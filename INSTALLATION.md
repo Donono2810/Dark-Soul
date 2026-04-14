@@ -47,6 +47,9 @@ Ce guide vous aide à importer le jeu Dark Soul complet dans Roblox Studio.
    - `Zone3.lua`
    - `Zone4.lua`
    - `Zone5.lua`
+   - `Zone6.lua`
+   - `Zone7.lua`
+   - `Zone8.lua`
    - `Dungeon.lua`
    - `NPC.lua`
 
@@ -118,7 +121,7 @@ Puis suivez la **Méthode 1** pour importer.
 
 Assurez-vous d'avoir importé **TOUS** ces fichiers (sinon le jeu ne fonctionnera pas) :
 
-### ✅ ServerScriptService (9 scripts)
+### ✅ ServerScriptService (10 scripts)
 - [ ] GameInit
 - [ ] ClassHealthManager
 - [ ] Zone2
@@ -127,6 +130,7 @@ Assurez-vous d'avoir importé **TOUS** ces fichiers (sinon le jeu ne fonctionner
 - [ ] Zone5
 - [ ] Zone6
 - [ ] Zone7
+- [ ] Zone8
 - [ ] Dungeon
 - [ ] NPC
 

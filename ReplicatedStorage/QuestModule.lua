@@ -9,6 +9,9 @@ local questData = {
     ["KillGoblins"] = {required = 10, reward = {["Dagger"] = 1, ["Potion"] = 3}, description = "Éliminer 10 gobelins"},
     ["KillOrcs"] = {required = 5, reward = {["Greatsword"] = 1}, description = "Vaincre 5 orcs sauvages"},
     ["KillSkeletons"] = {required = 15, reward = {["Scythe"] = 1}, description = "Détruire 15 squelettes"},
+    ["KillCrystalGolems"] = {required = 5, reward = {["CrystalShard"] = 5}, description = "Vaincre 5 golems de cristal"},
+    ["KillLavaSpirits"] = {required = 5, reward = {["PhoenixPotion"] = 2}, description = "Éliminer 5 esprits de lave"},
+    ["KillPhantomKnights"] = {required = 5, reward = {["ShadowBlade"] = 1}, description = "Vaincre 5 chevaliers fantômes"},
     ["KillBosses"] = {required = 3, reward = {["PhoenixPotion"] = 1}, description = "Tuer 3 boss"},
 
     -- Quêtes de collecte
@@ -21,8 +24,11 @@ local questData = {
     ["ExploreZone1"] = {required = 1, reward = {["Sword"] = 1}, description = "Explorer complètement la Zone 1"},
     ["ExploreZone2"] = {required = 1, reward = {["Fireball"] = 5}, description = "Découvrir les secrets de la Zone 2"},
     ["ExploreZone3"] = {required = 1, reward = {["HealSpell"] = 3}, description = "Cartographier la Zone 3"},
-    ["ExploreZone4"] = {required = 1, reward = {["LightningBolt"] = 2}, description = "Explorer les cavernes de la Zone 4"},    ["ExploreZone6"] = {required = 1, reward = {['CrystalShard'] = 10}, description = "Explorer la Caverne de Cristal"},
-    ["ExploreZone7"] = {required = 1, reward = {['MagmaCore'] = 5}, description = "Explorer l'Inferno Magmatique"},    ["FindHiddenTreasure"] = {required = 5, reward = {["GoldOre"] = 5}, description = "Trouver 5 trésors cachés"},
+    ["ExploreZone4"] = {required = 1, reward = {["LightningBolt"] = 2}, description = "Explorer les cavernes de la Zone 4"},
+    ["ExploreZone6"] = {required = 1, reward = {["CrystalShard"] = 10}, description = "Explorer la Caverne de Cristal"},
+    ["ExploreZone7"] = {required = 1, reward = {["MagmaCore"] = 5}, description = "Explorer l'Inferno Magmatique"},
+    ["ExploreZone8"] = {required = 1, reward = {["ShadowBlade"] = 1}, description = "Explorer la Forteresse des Ombres"},
+    ["FindHiddenTreasure"] = {required = 5, reward = {["GoldOre"] = 5}, description = "Trouver 5 trésors cachés"},
 
     -- Quêtes sociales
     ["RecruitAllies"] = {required = 3, reward = {["AmuletOfStrength"] = 1}, description = "Recruter 3 alliés PNJ"},

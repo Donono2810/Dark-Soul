@@ -217,9 +217,10 @@ Ce projet est un jeu Roblox ultra-méga-complet inspiré de Dark Souls avec 5 cl
 - **Zone 5** : Téléporteur (450,0,0), mélange 6 ennemis + **3 boss finaux**.
 - **Zone 6** : Téléporteur (600,0,0), 5 Crystal Golems + **3 boss de cristal**.
 - **Zone 7** : Téléporteur (700,0,0), 5 Lava Spirits + **3 boss de magma**.
+- **Zone 8** : Téléporteur (750,0,0), 5 Phantom Knights + **1 boss de l'ombre**.
 - **Donjon** : Porte grise (200,0,0), pièges, 4 ennemis variés + **3 boss dungeon**.
 
-**Total : 24 boss dans le jeu !**
+**Total : 25 boss dans le jeu !**
 
 Importez dans Roblox Studio pour jouer !
 

@@ -36,13 +36,18 @@ local bossDrops = {
     ["VoidSerpent"] = {
         items = {"LightningRapier", "VoidEssence", "EtherPotion"},
         chances = {0.1, 0.85, 0.6}
+    },
+    ["ShadowWarden"] = {
+        items = {"ShadowBlade", "EtherealArmor", "VoidEssence"},
+        chances = {0.2, 0.15, 0.4}
     }
 }
 
 local bossTypes = {
     ["Boss"] = {baseHealth = 500, baseDamage = 50, walkSpeed = 15, expReward = 200, ability = "Default"},
     ["CrystalColossus"] = {baseHealth = 900, baseDamage = 70, walkSpeed = 12, expReward = 800, ability = "CrystalShards"},
-    ["MagmaTitan"] = {baseHealth = 1200, baseDamage = 90, walkSpeed = 16, expReward = 1000, ability = "FireBreath"}
+    ["MagmaTitan"] = {baseHealth = 1200, baseDamage = 90, walkSpeed = 16, expReward = 1000, ability = "FireBreath"},
+    ["ShadowWarden"] = {baseHealth = 1400, baseDamage = 95, walkSpeed = 14, expReward = 1100, ability = "PhaseStrike"}
 }
 
 local secretBosses = {
