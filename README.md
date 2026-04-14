@@ -127,7 +127,7 @@ Ce projet est un jeu Roblox ultra-méga-complet inspiré de Dark Souls avec 5 cl
 - **Mini-Jeux et Défis Quotidiens** : Défis quotidiens (tuer ennemis, collecter items), mini-jeux comme arènes de duel.
 - **Compagnons (Pets)** : Loups, corbeaux, golems apprivoisables avec capacités d'aide en combat.
 - **Mode Survie** : Défense contre vagues d'ennemis croissantes avec récompenses basées sur la survie.
-- **Mode Histoire ou Campagne** : Mode narratif avec chapitres, cinématiques (caméra scriptée, dialogues), objectifs et récompenses progressives.
+- **Mode Histoire ou Campagne** : Mode narratif avec 10 chapitres, cinématiques (caméra scriptée, dialogues, choix), objectifs principaux/secondaires, événements aléatoires et récompenses progressives.
 - **Économie Dynamique** : Prix fluctuants pour les items, marché joueur avec taxes.
 - **Classement PvP** : Top kills affiché en jeu avec un tableau de score.
 
